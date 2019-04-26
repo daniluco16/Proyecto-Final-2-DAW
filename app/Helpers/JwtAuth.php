@@ -16,7 +16,7 @@ class JwtAuth{
 
     }
 
-    public function signup($email, $password, $getToken = null){
+    public function signup($email, $password, $getToken=null){
 
         $user = User::where(
             array(
@@ -33,7 +33,7 @@ class JwtAuth{
 
         }
 
-        if($signup){
+        if($signup == true){
 
             //Generar token
 
@@ -98,7 +98,7 @@ class JwtAuth{
 
         }
 
-        if(is_object($decoded) && isset($decoded->sub)){
+        if(isset($decoded) && is_object($decoded) && isset($decoded->sub)){
 
             $auth = true;
 

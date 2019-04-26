@@ -1,48 +1,60 @@
-<div class="contenedor" style="width:100%; height:100%;">
+<div class="contenedor" style="width:100%; height:881px;">
 
   <div class="container login-container">
 
-    <div class="row">
-      <div class="col-sm-6 login-form-1">
-        <h3>Bienvenido de nuevo!! </h3>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Correo... " value="" />
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Contraseña... " value="" />
-        </div>
-        <div class="form-group">
-          <a [routerLink]="['/registro']" class="registro">Registrarse?</a>
-        </div>
-        <div class="form-group text-center">
-          <input type="submit" class="btnSubmit" value="Login" />
-        </div>
+      <div class="row">
 
+        <div class="col-sm-6 login-form-1">
+          <h3>Bienvenido de nuevo!! </h3>
+
+          <div class="form-group">
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control"
+              placeholder="Correo... " required />
+          </div>
+          <span *ngIf="!email.valid && email.touched" class="text-danger">El email no es válido</span>
+
+          <div class="form-group">
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control"
+              placeholder="Contraseña... " required />
+          </div>
+          <span *ngIf="!password.valid && password.touched" class="text-danger">La contraseña no es válida</span>
+
+          <div class="form-group">
+            <a [routerLink]="['/registro']" class="registro">Registrarse?</a>
+          </div>
+          <div class="form-group text-center">
+            <input type="submit" class="btnSubmit" value="Login" [disabled]="!loginForm.form.valid" />
+          </div>
+
+        </div>
+        <div class="col-sm-6 login-form-2">
+          <div class="login-logo">
+            <img src="https://image.flaticon.com/icons/svg/1169/1169097.svg" alt="" />
+          </div>
+
+          <div>
+            <h3>Acerca de nosotros</h3>
+          </div>
+
+          <div class="detalle">
+            <p>
+              Aquí podras encontrar la información que buscas sobre tus películas favoritas, además de dejar tu huella
+              en
+              nuestra web con tus reseñas.
+            </p>
+
+          </div>
+
+        </div>
       </div>
-      <div class="col-sm-6 login-form-2">
-        <div class="login-logo">
-          <img src="https://image.flaticon.com/icons/svg/1169/1169097.svg" alt="" />
-        </div>
 
-        <div>
-          <h3>Acerca de nosotros</h3>
-        </div>
 
-        <div class="detalle">
-          <p>
-            Aquí podras encontrar la información que buscas sobre tus películas favoritas, además de dejar tu huella
-            en
-            nuestra web con tus reseñas.
-          </p>
-
-        </div>
-
-      </div>
-    </div>
-
+    </form>
 
   </div>
+
 
 </div>
 

@@ -1,12 +1,26 @@
-<nav class="navbar navbar-light bg-light">
-        <a [routerLink]="['login']" class="navbar-brand mb-0 h1">TodoPelis</a>
+<nav class="navbar navbar-light bg-light" *ngIf="!identity">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <a [routerLink]="['login']" class="navbar-brand mb-0 h1"><img src="https://image.flaticon.com/icons/svg/863/863170.svg" style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
     <div>
         <a [routerLink]="['login']" style="text-decoration: none; color: black; font-weight: bold;">Login </a>
-        
+
         <a [routerLink]="['registro']" style="text-decoration: none; color: black; font-weight: bold;"> Registro</a>
     </div>
-
 </nav>
+
+<nav class="navbar navbar-light bg-light" *ngIf="identity">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <a [routerLink]="['home']" class="navbar-brand mb-0 h1"><img src="https://image.flaticon.com/icons/svg/863/863170.svg" style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
+    <a [routerLink]="['logout', 1]" class="navbar-brand">Cerrar Sesión</a>
+</nav>
+
 
 <!-- Contenido -->
 

@@ -60,7 +60,7 @@ class UserController extends Controller
                 );
 
 
-            }else{
+            }elseif(!is_null($isset_user)){
 
                 //No guardar ya existe
 
@@ -106,7 +106,7 @@ class UserController extends Controller
 
         $pwd = hash('sha256', $password);
 
-        if(!is_null($email) && !is_null($password) && ($getToken == null || $getToken == 'false')){
+        if(!is_null($email) && !is_null($password) && ($getToken == null || $getToken == "false")){
 
             $signup = $jwtAuth->signup($email, $pwd);
 

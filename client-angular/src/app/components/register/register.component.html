@@ -1,40 +1,75 @@
 <div class="container-fluid register">
-    <div class="row" style="width: 100%;">
+    <div class="row" style="width: 100%;height:766px;">
         <div class="col-md-3 register-left">
             <img src="https://image.flaticon.com/icons/svg/83/83519.svg" alt="" />
             <h3>Registro</h3>
             <p>Aquí podras crearte tu cuenta para empezar a disfrutar de tus películas favoritas</p>
-            <input type="submit" name="" value="Login" /><br />
+            <button [routerLink]="['/login']" name="">Login</button><br />
         </div>
         <div class="col-md-9 register-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Registro de Usuarios</h3>
-                    <div class="row register-form ml-5">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control w-75" placeholder="Nombre *" value="" />
+
+                    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm);">
+
+                        <h3 class="register-heading">Registro de Usuarios</h3>
+
+                        <div class="alert alert-success  m-auto text-center" style="top: 220px; width: 500px;" *ngIf="status == 'success'">
+
+                                Se ha completado su registro correctamente
+
+                            </div>
+                            <div class="alert alert-danger m-auto text-center" style="top: 220px; width: 500px;" *ngIf="status == 'error'">
+
+                                No se ha completado su registro correctamente!!
+
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" class="form-control w-75" placeholder="Apodo  *" value="" />
-                            </div>
+                        <div class="row register-form ml-5">
 
-                            <div class="form-group">
-                                <input type="email" class="form-control w-75" placeholder="Correo  *" value="" />
-                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name"
+                                        class="form-control w-75" placeholder="Nombre *" required />
+                                    <span *ngIf="!name.valid && name.touched" class="text-danger">El nombre es
+                                        obligatorio!!!</span>
+                                </div>
 
+                                <div class="form-group">
+                                    <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick"
+                                        class="form-control w-75" placeholder="Apodo  *" required />
+                                    <span *ngIf="!nick.valid && nick.touched" class="text-danger">El apodo es
+                                        obligatorio!!!</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email"
+                                        class="form-control w-75" placeholder="Correo  *" required />
+                                    <span *ngIf="!email.valid && email.touched" class="text-danger">El correo es
+                                        obligatorio!!!</span>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname"
+                                        class="form-control w-75" placeholder="Apellido *" required />
+                                    <span *ngIf="!surname.valid && surname.touched" class="text-danger">El apellido es
+                                        obligatorio!!!</span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" #password="ngModel"
+                                        [(ngModel)]="user.password" class="form-control w-75" placeholder="Contraseña *"
+                                        required />
+                                    <span *ngIf="!password.valid && password.touched" class="text-danger">Introduce una
+                                        contraseña válida!!!</span>
+                                </div>
+                                <input type="submit" class="btnRegister" style="margin-top: 50%;" value="Registro" />
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control w-75" placeholder="Apellido *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control w-75" placeholder="Contraseña *" value="" />
-                            </div>
-                            <input type="submit" class="btnRegister" style="margin-top: 50%;" value="Registro" />
-                        </div>
-                    </div>
+
+                    </form>
+
                 </div>
 
             </div>
