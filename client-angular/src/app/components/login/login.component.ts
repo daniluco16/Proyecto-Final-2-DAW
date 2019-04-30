@@ -33,6 +33,12 @@ export class LoginComponent implements OnInit {
 
     console.log('login.component cargado correctamente');
 
+    if(!this.identity){
+
+      this._router.navigate(['login']);
+
+    }
+
     this.logout();
 
   }
@@ -68,7 +74,7 @@ export class LoginComponent implements OnInit {
 
               //Redirección
 
-              this._router.navigate(['/home']);
+              this._router.navigate(['home']);
 
             },
             error => {

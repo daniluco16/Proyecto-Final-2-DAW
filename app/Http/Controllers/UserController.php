@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 
 
+
 class UserController extends Controller
 {
     public function register(Request $request){
@@ -18,6 +19,26 @@ class UserController extends Controller
         $json = $request->input('json', null);
 
         $params = json_decode($json);
+
+        $validacion = json_decode($json, true);
+
+        $validate = \Validator::make($validacion, [
+
+            'name' => 'required|min:3',
+            'surname' => 'required|min:3',
+            'email' => 'required|min:5|unique:users',
+            'nick' => 'required|min:3|unique:users',
+            'password' => 'required|min:6'
+        ]);
+
+        if($validate->fails()){
+
+            $data = ($validate->errors());
+
+            return response()->json($data, 400);
+
+        }
+
 
         $name = (!is_null($json) && isset($params->name)) ? $params->name : null;
         $surname = (!is_null($json) && isset($params->surname)) ? $params->surname : null;

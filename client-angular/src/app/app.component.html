@@ -1,27 +1,98 @@
-<nav class="navbar navbar-light bg-light" *ngIf="!identity">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<div *ngIf="!identity">
 
 
-    <a [routerLink]="['login']" class="navbar-brand mb-0 h1"><img src="https://image.flaticon.com/icons/svg/863/863170.svg" style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
-    <div>
-        <a [routerLink]="['login']" style="text-decoration: none; color: black; font-weight: bold;">Login </a>
+    <nav class="navbar navbar-light bg-light">
 
-        <a [routerLink]="['registro']" style="text-decoration: none; color: black; font-weight: bold;"> Registro</a>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+        <a [routerLink]="['login']" class="navbar-brand mb-0 h1" style="font-weight: bold;"><img
+                src="https://image.flaticon.com/icons/svg/863/863170.svg"
+                style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
+        <div>
+            <a [routerLink]="['login']" style="text-decoration: none; color: black; font-weight: bold;">Login </a>
+
+            <a [routerLink]="['registro']" style="text-decoration: none; color: black; font-weight: bold;"> Registro</a>
+        </div>
+
+
+    </nav>
+
+    <router-outlet></router-outlet>
+
+</div>
+
+
+
+<div class="row" *ngIf="identity">
+
+    <nav class="col-sm-12 navbar navbar-light bg-light">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <a [routerLink]="['home']" class="navbar-brand mb-0 h1" style="font-weight: bold;"><img
+                src="https://image.flaticon.com/icons/svg/863/863170.svg"
+                style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
+        <a [routerLink]="['logout', 1]" class="navbar-brand">Cerrar Sesión</a>
+    </nav>
+
+</div>
+
+
+<div class="contenedor row" style="height: 100%;" *ngIf="identity">
+
+    <div class="content col-auto" style="width: 300px;height: auto;border: 3px solid white;">
+        <div class="container" style="margin-left: -6%;height: 800px;">
+
+            <div id="jquery-accordion-menu" class="jquery-accordion-menu" style="height: 680px;width: auto">
+                <div class="row">
+
+                    <div class="col-auto" style="height: 100%;">
+
+                        <ul>
+                            <li *ngIf="identity.image" class="active"><a [routerLink]="['listadoUser/detalle']"><img src="{{identity.image}}"
+                                        style="margin-right: 50px;">{{ identity.nick }}</a></li>
+                            <li *ngIf="!identity.image" class="active"><a [routerLink]="['listadoUser/detalle']"><img
+                                        src="https://image.flaticon.com/icons/svg/265/265674.svg"
+                                        style="margin-right: 50px;">{{ identity.nick }}</a></li>
+                            <li><a [routerLink]="['listadoUser']"><i class="fas fa-user-shield"></i> Usuarios</a></li>
+                            <li><a [routerLink]="['home']"><i class="fas fa-film"></i> Películas</a></li>
+                            <li><a href="#"><i class="fas fa-heart"></i> Películas Favoritas</a></li>
+                            <li><a href="#"><i class="fas fa-comments"></i> Comentarios</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-</nav>
-
-<nav class="navbar navbar-light bg-light" *ngIf="identity">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-    <a [routerLink]="['home']" class="navbar-brand mb-0 h1"><img src="https://image.flaticon.com/icons/svg/863/863170.svg" style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
-    <a [routerLink]="['logout', 1]" class="navbar-brand">Cerrar Sesión</a>
-</nav>
 
 
-<!-- Contenido -->
+    <div class="col-sm-9 d-flex justify-content-center" style="height: auto;">
 
-<router-outlet></router-outlet>
+        <!-- Contenido -->
+
+        <router-outlet></router-outlet>
+
+    </div>
+
+
+
+</div>
+<!-- Footer -->
+<footer class="page-footer blue" style="font-weight: bold;">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 m-auto">© 2019 Copyright:
+          <a href="https://www.iessansebastian.com/"> IES San Sebastian</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->

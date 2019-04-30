@@ -1,0 +1,47 @@
+table{
+    background-color: white;
+    width: 1000px;
+    margin-top: 50px;
+}
+thead{
+    background-color: #f05837;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+tr{
+    text-align: center;
+}
+#borrar{
+    color: red;
+}
+#borrar:hover{
+    color: crimson;
+}
+#editar{
+    color: green;
+}
+#editar:hover{
+    color: darkgreen;
+}
+i{
+
+    margin-right: 10px;
+}
+#añadir{
+    color: black;
+}
+#añadir:hover{
+    color: white;
+}
+#permisos{
+
+    color: black;
+
+}
+
+#permisos:hover{
+
+    color: darkslategray;
+
+}

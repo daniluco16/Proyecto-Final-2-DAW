@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"><a [routerLink]="['crear']" id="añadir"><i class="fas fa-plus"></i></a>Nick</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>
+              <a href="#" id="permisos"><i class="fas fa-user-lock"></i></a>
+              <a [routerLink]="['detalle']" id="ver"><i class="fas fa-eye"></i></a>
+              <a [routerLink]="['editar']" id="editar"><i class="fas fa-edit"></i></a>
+              <a href="#" id="borrar" data-toggle="modal" data-target="#exampleModal"><i
+                  class="fas fa-trash-alt"></i></a>
+
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@mdo</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="font-weight: bold;" id="exampleModalLabel">Eliminar usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ¿Estás apunto de eliminar un usuario de la web estás seguro?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger">Eliminar Usuario</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

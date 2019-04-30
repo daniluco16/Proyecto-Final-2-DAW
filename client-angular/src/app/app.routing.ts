@@ -6,15 +6,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { ListadoComponent } from './components/listado/listado.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { EditarComponent } from './components/editar/editar.component';
+import { CrearUserComponent } from './components/crear-user/crear-user.component';
+
+
 
 const appRoutes: Routes = [
 
     {path:'', component: LoginComponent},
     {path:'login', component: LoginComponent},
-    {path: 'logout/:sure', component: LoginComponent},
+    {path:'logout/:sure', component: LoginComponent},
     {path:'home', component: HomeComponent},
     {path:'registro', component: RegisterComponent},
-    {path: '**', component: LoginComponent}
+    {path:'listadoUser', component: ListadoComponent},
+    {path:'listadoUser/detalle', component: DetalleComponent},
+    {path:'listadoUser/editar', component: EditarComponent},
+    {path:'listadoUser/crear', component: CrearUserComponent},    
+    {path:'**', component: LoginComponent}
 
 
 ];

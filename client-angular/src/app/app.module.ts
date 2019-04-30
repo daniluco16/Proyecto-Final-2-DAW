@@ -8,13 +8,22 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { ListadoComponent } from './components/listado/listado.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { EditarComponent } from './components/editar/editar.component';
+import { CrearUserComponent } from './components/crear-user/crear-user.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ListadoComponent,
+    DetalleComponent,
+    EditarComponent,
+    CrearUserComponent,
   ],
   imports: [
     BrowserModule,
