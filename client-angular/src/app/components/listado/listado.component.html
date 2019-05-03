@@ -1,67 +1,58 @@
+<style>
+    .my-pagination /deep/ .ngx-pagination .current {
+      background: #e35536;
+    }
+  </style>
+
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" *ngIf="users">
 
     <div class="col-sm-12">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col"><a [routerLink]="['crear']" id="añadir"><i class="fas fa-plus"></i></a>Nick</th>
+            <th scope="col"><a *ngIf="identity.rol == 'Admin'" [routerLink]="['crear']" id="añadir"><i class="fas fa-plus"></i></a>Nick</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Correo</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: p}">
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>{{user.nick}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>{{user.email}}</td>
             <td>
-              <a href="#" id="permisos"><i class="fas fa-user-lock"></i></a>
-              <a [routerLink]="['detalle']" id="ver"><i class="fas fa-eye"></i></a>
-              <a [routerLink]="['editar']" id="editar"><i class="fas fa-edit"></i></a>
-              <a href="#" id="borrar" data-toggle="modal" data-target="#exampleModal"><i
-                  class="fas fa-trash-alt"></i></a>
+              <a *ngIf="identity.rol == 'Admin'" href="#" id="permisos"><i class="fas fa-user-lock"></i></a>
+              <a [routerLink]="['detalle', user.id]" id="ver"><i class="fas fa-eye"></i></a>
+              <a *ngIf="user.id == identity.sub || identity.rol == 'Admin'" [routerLink]="['editar', user.id]" id="editar"><i class="fas fa-edit"></i></a>
+              <a (click)="deleteUser(user.id)" id="borrar"><i class="fas fa-trash-alt"></i></a>
 
             </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-          </tr>
-
         </tbody>
       </table>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" style="font-weight: bold;" id="exampleModalLabel">Eliminar usuario</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ¿Estás apunto de eliminar un usuario de la web estás seguro?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger">Eliminar Usuario</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
+
+  </div>
+
+  <pagination-controls class="my-pagination" (pageChange)="p = $event"
+    responsive="true"
+    previousLabel="Anterior"
+    nextLabel="Siguiente">
+
+
+  </pagination-controls>
+
+
+  <div class="row" *ngIf="!users">
+
+    <h1 class="text-white">Cargando listado de usuarios...</h1>
+    <img
+      src="https://media2.giphy.com/media/jAYUbVXgESSti/giphy.gif?cid=790b76115cc99ab06e6d59346ff869b0&rid=giphy.gif">
 
   </div>
 </div>

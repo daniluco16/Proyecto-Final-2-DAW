@@ -52,9 +52,9 @@
                     <div class="col-auto" style="height: 100%;">
 
                         <ul>
-                            <li *ngIf="identity.image" class="active"><a [routerLink]="['listadoUser/detalle']"><img src="{{identity.image}}"
+                            <li *ngIf="identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img src="{{identity.image}}"
                                         style="margin-right: 50px;">{{ identity.nick }}</a></li>
-                            <li *ngIf="!identity.image" class="active"><a [routerLink]="['listadoUser/detalle']"><img
+                            <li *ngIf="!identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img
                                         src="https://image.flaticon.com/icons/svg/265/265674.svg"
                                         style="margin-right: 50px;">{{ identity.nick }}</a></li>
                             <li><a [routerLink]="['listadoUser']"><i class="fas fa-user-shield"></i> Usuarios</a></li>

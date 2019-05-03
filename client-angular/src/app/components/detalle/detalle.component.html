@@ -8,22 +8,22 @@
 
         <img class="card-img-top" src="https://i.imgur.com/oW1dGDI.jpg" alt="da">
         <div class="card-body">
-          <label>Nombre de Usuario:</label>
+          <label>Nombre de Usuario: <strong>{{user.nick}}</strong></label>
           <h3>Datos Personales</h3>
           <hr>
-          <label>Nombre y Apellido:</label>
+          <label>Nombre y Apellido: <strong>{{user.name}} {{user.surname}}</strong></label>
           <br>
-          <label>Correo actual:</label>
+          <label>Correo actual: <strong>{{user.email}}</strong></label>
 
 
           <div class="row">
 
             <div class="col-sm-6">
-              <a href="#" id="editar" class="btn btn-warning d-flex justify-content-center">Editar Perfil</a>
+              <a *ngIf="identity.sub == user.id" [routerLink]="['../../editar', user.id]" id="editar" class="btn btn-warning d-flex justify-content-center">Editar Perfil</a>
 
             </div>
             <div class="col-sm-6">
-              <a [routerLink]="['../']" id="volver" class="btn btn-primary d-flex justify-content-center">Volver</a>
+              <a [routerLink]="['../../']" id="volver" class="btn btn-primary d-flex justify-content-center">Volver</a>
 
             </div>
 

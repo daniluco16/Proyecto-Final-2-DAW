@@ -2,44 +2,58 @@
     <div class="contact-image">
         <img src="https://image.flaticon.com/icons/svg/1169/1169097.svg" />
     </div>
-    <form method="post">
+
+    <div class="alert alert-success text-center" *ngIf="status == 'success'">
+
+            Se ha completado su registro correctamente
+
+        </div>
+        <div class="alert alert-danger text-center" *ngIf="status == 'error'">
+
+            No se ha completado su registro correctamente!!
+
+        </div>
+
+    <form enctype="multipart/form-data" #storeForm="ngForm" (ngSubmit)="onSubmit(storeForm);">
         <h3>Crear un nuevo Usuario</h3>
         <div class="row">
+                
             <div class="col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="nick" class="form-control" placeholder="Nick" value="" required />
+                    <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" placeholder="Nick..." value="" required />
+                    <span *ngIf="!nick.valid && nick.touched" class="text-danger">El nick es
+                        obligatorio!!!</span>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Nombre" value="" required />
+                    <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" placeholder="Nombre..." value="" required />
+                    <span *ngIf="!name.valid && name.touched" class="text-danger">El nombre es
+                        obligatorio!!!</span>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="surname" class="form-control" placeholder="Apellidos" value="" required />
+                    <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" placeholder="Apellidos..." value="" required />
+                    <span *ngIf="!surname.valid && surname.touched" class="text-danger">Los apellidos son
+                        obligatorios!!!</span>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="email" class="form-control" placeholder="Correo" value="" required />
+                    <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" placeholder="Correo..." value="" required />
+                    <span *ngIf="!email.valid && email.touched" class="text-danger">El correo es
+                        obligatorio!!!</span>
                 </div>
                 <div class="form-group">
-                    <input type="file" name="image" class="form-control" placeholder="Imagen de perfil" />
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Contraseña..." value="" required />
+                    <span *ngIf="!password.valid && password.touched" class="text-danger">La contraseña es
+                        obligatoria!!!</span>
                 </div>
-
                 <div class="form-group">
-                    <label for="permiso">Permisos de la aplicación</label>
-                    <select class="form-control" id="permiso">
-                        <option selected="selected">Usuario</option>
-                        <option>Admin</option>
-                    </select>
+                    <input type="file" name="image" #image="ngModel" (change)="readUrl($event)" [(ngModel)]="user.image" class="form-control" accept="image/jpeg, image/png" placeholder="Imagen de perfil" />
                 </div>
 
                 <div class="row">
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group text-center">
                             <input type="submit" name="btnSubmit" class="btnContact" value="Registrar Usuario" />
                         </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <a [routerLink]="['../']" class="form-group btn btn-primary" id="btnVolver">Volver</a>
                     </div>
 
                 </div>

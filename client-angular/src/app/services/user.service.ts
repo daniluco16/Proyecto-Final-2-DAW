@@ -39,6 +39,18 @@ export class UserService {
 
 
     }
+    store(user): Observable<any>{
+
+        let json = JSON.stringify(user);
+
+        let params = 'json='+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.post(this.url+ 'store', params, {headers:headers});
+
+    }
+    
     signup(user, geTtoken = null): Observable<any>{
 
         if(geTtoken != null){
@@ -57,6 +69,42 @@ export class UserService {
 
 
     }
+
+    getUsers(): Observable<any>{
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.get(this.url+'listado', {headers: headers})
+        
+    }
+
+    getUser(id): Observable<any>{
+
+        return this._http.get(this.url+'detalle/'+ id);
+
+    }
+    updateUser(token, user, id): Observable<any>{
+
+        let json = JSON.stringify(user);
+
+        let params = "json="+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', token);
+
+        return this._http.put(this.url + 'update/' + id, params, {headers: headers});
+
+    }
+
+    delete(token, id): Observable<any>{
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', token);
+
+
+        return this._http.delete(this.url+'destroy/'+ id, {headers: headers});
+
+
+    }
+
 
     getIdentity(){
 

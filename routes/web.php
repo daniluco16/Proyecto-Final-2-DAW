@@ -18,3 +18,9 @@ Route::get('/', function () {
 
 Route::post('/api/register', 'UserController@register');
 Route::post('/api/login', 'UserController@login');
+Route::post('/api/store', 'UserController@store');
+Route::get('/api/listado', 'UserController@index');
+Route::get('/api/detalle/{id}', 'UserController@show');
+Route::put('/api/update/{id}', 'UserController@update');
+Route::delete('/api/destroy/{id}', 'UserController@destroy');
+

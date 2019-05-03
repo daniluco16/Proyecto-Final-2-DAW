@@ -21,8 +21,8 @@ const appRoutes: Routes = [
     {path:'home', component: HomeComponent},
     {path:'registro', component: RegisterComponent},
     {path:'listadoUser', component: ListadoComponent},
-    {path:'listadoUser/detalle', component: DetalleComponent},
-    {path:'listadoUser/editar', component: EditarComponent},
+    {path:'listadoUser/detalle/:id', component: DetalleComponent},
+    {path:'listadoUser/editar/:id', component: EditarComponent},
     {path:'listadoUser/crear', component: CrearUserComponent},    
     {path:'**', component: LoginComponent}
 
