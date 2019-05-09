@@ -14,7 +14,7 @@
         <div class="movie-card" style="border: 5px solid #e35536;">
             <div class="movie-header">
                 <div class="header-icon-container">
-                    <a href="#">
+                    <a [routerLink]="['detallePelicula']">
                         <img
                             src="https://i.pinimg.com/236x/1d/7d/80/1d7d80e1ec3beb5d808d5d16fb757007--harry-potter-movies-harry-potter-affiche.jpg">
                     </a>
@@ -31,7 +31,7 @@
                     <div class="row">
 
                         <div class="col-sm-9">
-                            <a href="#">Comentar <i class="fas fa-comment-dots"></i></a>
+                            <a [routerLink]="['comments']">Comentar <i class="fas fa-comment-dots"></i></a>
                         </div>
                         <div class="col-sm-3">
                             <a href="#"><i class="fas fa-crown"></i></a>

@@ -39,6 +39,14 @@ li{
     font-weight: bold;
 
 }
+
+#menu #op a:hover{
+
+    background-color: white;
+    color: black;
+
+}
+
 #active{
     font-size: 15px;
 }

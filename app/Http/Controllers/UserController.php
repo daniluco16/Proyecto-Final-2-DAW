@@ -191,7 +191,6 @@ class UserController extends Controller
         $email = (!is_null($json) && isset($params->email)) ? $params->email : null;
         $nick = (!is_null($json) && isset($params->nick)) ? $params->nick : null;
         $password = (!is_null($json) && isset($params->password)) ? $params->password : null;
-        $rol = (!is_null($json) && isset($params->rol)) ? $params->rol : null;
         $image = $params->image;
 
         if(!is_null($name) && !is_null($surname) && !is_null($email) && !is_null($nick) && !is_null($password)){
@@ -223,7 +222,7 @@ class UserController extends Controller
             $user->surname = $surname;
             $user->email = $email;
             $user->nick = $nick;
-            $user->rol = $rol;
+            $user->rol = 'Usuario';
             
             if(isset($imageName)){
 
@@ -305,6 +304,45 @@ class UserController extends Controller
         ),200);
     }
 
+    public function changeRol($id, Request $request){
+
+        $hash = $request->header('Authorization', null);
+
+        $jwtAuth = new JwtAuth();
+        $checkToken = $jwtAuth->checkToken($hash);
+
+        if($checkToken){
+
+            $user = User::find($id);
+
+            $user->rol = $user->rol == 'Admin' ? 'Usuario' : 'Admin';
+
+            $user->save();
+
+            $data = array(
+
+                'rol' => $user->rol,
+                'status' => 'success',
+                'code' => 200
+
+            );
+
+        }else{
+
+            $data = array(
+
+                'rol' => $user->rol,
+                'status' => 'error',
+                'code' => 300
+
+            );
+
+        }
+
+        return response()->json($data, 200);
+
+    }
+
     public function update($id, Request $request){
 
         $hash = $request->header('Authorization', null);
@@ -326,8 +364,8 @@ class UserController extends Controller
 
                 'name' => 'required|min:3',
                 'surname' => 'required|min:3',
-                'email' => 'required|min:5',
-                'nick' => 'required|min:3',
+                'email' => 'required|min:5|unique:users,email,'. $id,
+                'nick' => 'required|min:3|unique:users,nick,'. $id,
                 'password' => 'required|min:6'
             ]);
 
@@ -352,6 +390,7 @@ class UserController extends Controller
             unset($params_array['id']);
             unset($params_array['created_at']);
             unset($params_array['rol']);
+            
             
             
 
@@ -423,4 +462,6 @@ class UserController extends Controller
 
 
     }
+
+
 }

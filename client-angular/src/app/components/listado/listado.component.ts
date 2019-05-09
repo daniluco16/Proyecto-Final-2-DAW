@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { identity } from 'rxjs';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-listado',
@@ -15,9 +16,13 @@ export class ListadoComponent implements OnInit {
   public p: number = 1;
 
   public title: string;
+  public user: User;
+  public status: string;
   public users: Array<User>;
   public token;
   public identity;
+
+  
 
   constructor(
 
@@ -58,6 +63,37 @@ export class ListadoComponent implements OnInit {
       error => {
 
         console.log(error);
+      }
+
+
+    );
+
+
+  }
+
+
+  changeRol(id){
+
+    this._userService.changeRol(this.token, id).subscribe(
+
+      response => {
+
+        console.log(response);
+  
+        if(response.status == 'success'){
+  
+          this.status = 'success';
+
+          this.getUsers();
+
+    
+        }else{
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any>error);
+        this.status = 'error';
       }
 
 

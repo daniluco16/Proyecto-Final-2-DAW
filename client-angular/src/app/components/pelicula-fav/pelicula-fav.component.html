@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center row" style="width: 100%; margin: auto;">
+
+  <div class="col-12">
+
+      <div class="container" id="cont">
+          <div class="d-flex justify-content-center">
+              <h3 class="font-weight-bold" style="color: white; text-shadow: 2px 2px orange;">PELÍCULAS FAVORITAS</h3>
+          </div>
+      </div>
+
+      <div class="movie-card" style="border: 5px solid #e35536;">
+          <div class="movie-header">
+              <div class="header-icon-container">
+                  <a [routerLink]="['detallePelicula']">
+                      <img
+                          src="https://i.pinimg.com/236x/1d/7d/80/1d7d80e1ec3beb5d808d5d16fb757007--harry-potter-movies-harry-potter-affiche.jpg">
+                  </a>
+              </div>
+          </div>
+          <!--movie-header-->
+          <div class="movie-content">
+              <div class="movie-content-header">
+                  <a href="#">
+                      <h3 class="movie-title">Man of Steel</h3>
+                  </a>
+              </div>
+              <div class="movie-info">
+                  <div class="row">
+
+                      <div class="col-sm-9">
+                          <a [routerLink]="['comments']">Comentar <i class="fas fa-comment-dots"></i></a>
+                      </div>                    
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+  </div>
+
+</div>

@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/proyectoFinal":{"type":null,"mount_options":["uid=1000","gid=1000"],"guestpath":"/home/vagrant/proyectoFinal","hostpath":"D:/Users/usuario/Desktop/proyectoFinal","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/Users/usuario/Desktop/proyectoFinal","disabled":false,"__vagrantfile":true}}}

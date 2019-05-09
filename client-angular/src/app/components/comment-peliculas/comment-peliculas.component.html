@@ -1,0 +1,48 @@
+<div class="container-fluid ">
+  <div class="row mt-5 mb-3">
+
+    <div class="col-6">
+      <img style="border: 8px whitesmoke; border-style: double;" width=300 height="300" src="https://lh3.googleusercontent.com/GmwM-Je6w6rjlKChT4JkBWmBNFvvbGXKPKceMN8cpFQYOIjjKfny84m2bfIEIbPWohFrUw=s85">
+    </div>
+
+    <div class="col-6 form-group">
+
+      <label for="comentario" style="color: white;">Comentario de la película:</label>
+      <textarea class="form-control" rows="5" id="comentario"></textarea>
+
+      <div>
+          <input class="btn btn-info font-weight-bold mr-5 mt-5" type="submit"
+          value="Realizar Comentario">
+
+          <a class="btn btn-secondary font-weight-bold mt-5" [routerLink]="['../']">Volver</a>
+      </div>
+     
+    </div>
+
+
+  </div>
+
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-8">
+      <div class="card card-white post">
+        <div class="post-heading">
+          <div class="float-left image">
+            <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+          </div>
+          <div class="float-left meta">
+            <div class="title h5">
+              <a href="#"><b>Ryan Haywood</b></a>
+            </div>
+            <h6 class="text-muted time">1 minute ago</h6>
+          </div>
+        </div>
+        <div class="post-description">
+          <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js
+            framework. Codes for developers and web designers</p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

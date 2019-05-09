@@ -22,11 +22,16 @@ export class EditarComponent implements OnInit {
     private _router: Router,
     private _userService: UserService
 
+    
+
   ) {
 
     this.title = 'Editar usuario';
 
     this.token = this._userService.getToken();
+
+    this.user = new User(1, '', '', '', '', '', '', '');
+
 
    }
 
@@ -46,6 +51,12 @@ export class EditarComponent implements OnInit {
 
   }
 
+  onUpload(e){
+
+    console.log('subir', e);
+
+  }
+
   getUser(id){
 
         this._userService.getUser(id).subscribe(
@@ -55,6 +66,7 @@ export class EditarComponent implements OnInit {
             if(response.status == 'success'){
 
               this.user = response.user;
+              console.log(response);
 
             }else{
 

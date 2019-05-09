@@ -34,13 +34,13 @@ i{
 #añadir:hover{
     color: white;
 }
-#permisos{
+#permisos_admin, #permisos_user{
 
     color: black;
 
 }
 
-#permisos:hover{
+#permiso_admin:hover, #permiso_user:hover{
 
     color: darkslategray;
 

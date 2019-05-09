@@ -6,7 +6,9 @@
 
       <div class="card" style="width:400px">
 
-        <img class="card-img-top" src="https://i.imgur.com/oW1dGDI.jpg" alt="da">
+        <img *ngIf="!user.image" class="card-img-top" src="https://image.flaticon.com/icons/svg/265/265674.svg" alt="da">
+        <img *ngIf="user.image" class="card-img-top" src="{{user.image}}" alt="da">
+
         <div class="card-body">
           <label>Nombre de Usuario: <strong>{{user.nick}}</strong></label>
           <h3>Datos Personales</h3>
@@ -19,7 +21,7 @@
           <div class="row">
 
             <div class="col-sm-6">
-              <a *ngIf="identity.sub == user.id" [routerLink]="['../../editar', user.id]" id="editar" class="btn btn-warning d-flex justify-content-center">Editar Perfil</a>
+              <a *ngIf="identity.sub == user.id || identity.rol == 'Admin'" [routerLink]="['../../editar', user.id]" id="editar" class="btn btn-warning d-flex justify-content-center">Editar Perfil</a>
 
             </div>
             <div class="col-sm-6">

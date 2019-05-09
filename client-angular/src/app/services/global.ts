@@ -1,5 +1,5 @@
 export var GLOBAL = {
 
-    url: 'http://proyectofinal.com.devel/api/'
+    url: 'http://proyectofinal.devel/api/'
     
 };

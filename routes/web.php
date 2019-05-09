@@ -23,4 +23,7 @@ Route::get('/api/listado', 'UserController@index');
 Route::get('/api/detalle/{id}', 'UserController@show');
 Route::put('/api/update/{id}', 'UserController@update');
 Route::delete('/api/destroy/{id}', 'UserController@destroy');
+Route::put('/api/changeRol/{id}', 'UserController@changeRol');
+
+
 

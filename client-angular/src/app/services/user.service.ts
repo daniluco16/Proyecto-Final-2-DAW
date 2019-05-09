@@ -83,6 +83,18 @@ export class UserService {
         return this._http.get(this.url+'detalle/'+ id);
 
     }
+    changeRol(token, id): Observable<any>{
+
+        let json = JSON.stringify(id);
+
+        let params = "json="+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', token);
+
+        return this._http.put(this.url + 'changeRol/' + id, params, {headers: headers});
+
+
+    }
     updateUser(token, user, id): Observable<any>{
 
         let json = JSON.stringify(user);
@@ -94,6 +106,9 @@ export class UserService {
         return this._http.put(this.url + 'update/' + id, params, {headers: headers});
 
     }
+
+ 
+
 
     delete(token, id): Observable<any>{
 

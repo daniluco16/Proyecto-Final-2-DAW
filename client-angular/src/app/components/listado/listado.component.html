@@ -1,17 +1,18 @@
 <style>
-    .my-pagination /deep/ .ngx-pagination .current {
-      background: #e35536;
-    }
-  </style>
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: #e35536;
+  }
+</style>
 
-<div class="container-fluid">
-  <div class="row" *ngIf="users">
+<div class="container">
+  <div class="row  d-flex justify-content-center" *ngIf="users">
 
-    <div class="col-sm-12">
+    <div class="col-sm-12  d-flex justify-content-center">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col"><a *ngIf="identity.rol == 'Admin'" [routerLink]="['crear']" id="añadir"><i class="fas fa-plus"></i></a>Nick</th>
+            <th scope="col"><a *ngIf="identity.rol == 'Admin'" [routerLink]="['crear']" id="añadir"><i
+                  class="fas fa-plus"></i></a>Nick</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Correo</th>
@@ -19,16 +20,29 @@
           </tr>
         </thead>
         <tbody *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: p}">
+          
           <tr>
             <td>{{user.nick}}</td>
             <td>{{user.name}}</td>
             <td>{{user.surname}}</td>
             <td>{{user.email}}</td>
             <td>
-              <a *ngIf="identity.rol == 'Admin'" href="#" id="permisos"><i class="fas fa-user-lock"></i></a>
+              <a *ngIf="identity.rol == 'Admin' && user.id != identity.sub"
+                (click)="changeRol(user.id)" id="permiso_user">
+
+                <i id="admin" *ngIf="user.rol == 'Admin'" class="fas fa-lock-open"></i>
+                <i id="usuario" *ngIf="user.rol == 'Usuario'" class="fas fa-lock"></i>
+
+              </a>
+              
+                
               <a [routerLink]="['detalle', user.id]" id="ver"><i class="fas fa-eye"></i></a>
-              <a *ngIf="user.id == identity.sub || identity.rol == 'Admin'" [routerLink]="['editar', user.id]" id="editar"><i class="fas fa-edit"></i></a>
-              <a (click)="deleteUser(user.id)" id="borrar"><i class="fas fa-trash-alt"></i></a>
+
+              <a *ngIf="user.id == identity.sub || identity.rol == 'Admin'" [routerLink]="['editar', user.id]"
+                id="editar"><i class="fas fa-edit"></i></a>
+
+              <a *ngIf="user.id != identity.sub && identity.rol == 'Admin'" (click)="deleteUser(user.id)" id="borrar"><i
+                  class="fas fa-trash-alt"></i></a>
 
             </td>
           </tr>
@@ -37,22 +51,15 @@
     </div>
 
 
+    <pagination-controls class="my-pagination" (pageChange)="p = $event" responsive="true" previousLabel="Anterior"
+      nextLabel="Siguiente">
+    </pagination-controls>
   </div>
 
-  <pagination-controls class="my-pagination" (pageChange)="p = $event"
-    responsive="true"
-    previousLabel="Anterior"
-    nextLabel="Siguiente">
-
-
-  </pagination-controls>
 
 
   <div class="row" *ngIf="!users">
-
-    <h1 class="text-white">Cargando listado de usuarios...</h1>
-    <img
-      src="https://media2.giphy.com/media/jAYUbVXgESSti/giphy.gif?cid=790b76115cc99ab06e6d59346ff869b0&rid=giphy.gif">
+    <img src="https://www.cedd.net/img/loading.gif">
 
   </div>
 </div>

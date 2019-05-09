@@ -14,6 +14,9 @@ import { ListadoComponent } from './components/listado/listado.component';
 import { DetalleComponent } from './components/detalle/detalle.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { CrearUserComponent } from './components/crear-user/crear-user.component';
+import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-pelicula.component';
+import { CommentPeliculasComponent } from './components/comment-peliculas/comment-peliculas.component';
+import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.component';
 
 
 @NgModule({
@@ -26,6 +29,9 @@ import { CrearUserComponent } from './components/crear-user/crear-user.component
     DetalleComponent,
     EditarComponent,
     CrearUserComponent,
+    DetallePeliculaComponent,
+    CommentPeliculasComponent,
+    PeliculaFavComponent,
   ],
   imports: [
     BrowserModule,
