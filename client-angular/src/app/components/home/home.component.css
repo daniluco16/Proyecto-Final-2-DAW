@@ -34,19 +34,7 @@ body {
     color: #6ABCEA;
   }
   
-  .container {
-    /* display: -webkit-box;
-    display: -ms-flexbox;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    max-width: 100%;
-    margin-top: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; */
-  }
+
   
   .movie-card {
     background: #ffffff;
@@ -185,7 +173,6 @@ body {
 
   .searchbar{
     margin-bottom: auto;
-    margin-top: auto;
     height: 60px;
     background-color: #353b48;
     border-radius: 30px;
@@ -195,17 +182,15 @@ body {
     .search_input{
     color: white;
     border: 0;
-    outline: 0;
     background: none;
     width: 0;
     caret-color:transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
     }
 
     .searchbar:hover > .search_input{
     padding: 0 10px;
-    width: 450px;
+    width: 420px;
     caret-color:red;
     transition: width 0.4s linear;
     }

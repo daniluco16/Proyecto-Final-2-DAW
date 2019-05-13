@@ -1,5 +1,4 @@
-<div *ngIf="!identity">
-
+<div>
 
     <nav class="navbar navbar-light bg-light">
 
@@ -7,65 +6,43 @@
             integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
-        <a [routerLink]="['login']" class="navbar-brand mb-0 h1" style="font-weight: bold;"><img
+        <a [routerLink]="!identity ? ['/login'] : ['/home']" class="navbar-brand mb-0 h1" style="font-weight: bold;"><img
                 src="https://image.flaticon.com/icons/svg/863/863170.svg"
                 style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
+                
         <div>
-            <a [routerLink]="['login']" style="text-decoration: none; color: black; font-weight: bold;">Login </a>
+            <a *ngIf="!identity" [routerLink]="['/login']" style="text-decoration: none; color: black; font-weight: bold;">Login </a>
 
-            <a [routerLink]="['registro']" style="text-decoration: none; color: black; font-weight: bold;"> Registro</a>
+            <a *ngIf="!identity" [routerLink]="['/registro']" style="text-decoration: none; color: black; font-weight: bold;"> Registro</a>
+            <a *ngIf="identity" [routerLink]="['/logout', 1]" class="navbar-brand">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
         </div>
 
 
     </nav>
 
-    <router-outlet></router-outlet>
 
 </div>
 
 
+<div class="contenedor row justify-content-center">
 
-<div class="row" *ngIf="identity">
+    <div *ngIf="identity" class="content col-sm-3" style="border: 3px solid white;">
+        <div class="container" style="height: 800px;">
 
-    <nav class="col-sm-12 navbar navbar-light bg-light">
+            <div id="jquery-accordion-menu" class="jquery-accordion-menu" style="height: 680px;">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+                <ul id="menu">
+                    <li *ngIf="identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img src="http://proyectofinal.devel/{{identity.image}}"
+                                style="margin-right: 50px;">Bienvenido {{ identity.nick }}</a></li>
+                    <li *ngIf="!identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img
+                                src="https://image.flaticon.com/icons/svg/265/265674.svg"
+                                style="margin-right: 50px;">Bienvenido {{ identity.nick }}</a></li>
+                    <li id="op"><a [routerLink]="['listadoUser']"><i class="fas fa-user-shield"></i> Usuarios</a></li>
+                    <li id="op"><a [routerLink]="['home']"><i class="fas fa-film"></i> Películas</a></li>
+                    <li id="op"><a [routerLink]="['/listadoFav']"><i class="fas fa-heart"></i> Películas Favoritas</a></li>
+                    <li id="op"><a href="#"><i class="fas fa-comments"></i> Comentarios</a></li>
+                </ul>
 
-        <a [routerLink]="['home']" class="navbar-brand mb-0 h1" style="font-weight: bold;"><img
-                src="https://image.flaticon.com/icons/svg/863/863170.svg"
-                style="width: 50px; height: 50px; margin-left: 8px; margin-right: 20px;">TodoPelis</a>
-        <a [routerLink]="['logout', 1]" class="navbar-brand">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-    </nav>
-
-</div>
-
-
-<div class="contenedor row" style="height: 100%;" *ngIf="identity">
-
-    <div class="content col-sm-3" style="height: auto; border: 3px solid white;">
-        <div class="container" style="margin-left: -6%;height: 800px;">
-
-            <div id="jquery-accordion-menu" class="jquery-accordion-menu" style="height: 680px;width: auto">
-                <div class="row">
-
-                    <div class="col-auto" style="height: 100%;">
-
-                        <ul id="menu">
-                            <li *ngIf="identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img src="{{identity.image}}"
-                                        style="margin-right: 50px;">Bienvenido {{ identity.nick }}</a></li>
-                            <li *ngIf="!identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img
-                                        src="https://image.flaticon.com/icons/svg/265/265674.svg"
-                                        style="margin-right: 50px;">Bienvenido {{ identity.nick }}</a></li>
-                            <li id="op"><a [routerLink]="['listadoUser']"><i class="fas fa-user-shield"></i> Usuarios</a></li>
-                            <li id="op"><a [routerLink]="['home']"><i class="fas fa-film"></i> Películas</a></li>
-                            <li id="op"><a [routerLink]="['/listadoFav']"><i class="fas fa-heart"></i> Películas Favoritas</a></li>
-                            <li id="op"><a href="#"><i class="fas fa-comments"></i> Comentarios</a></li>
-                        </ul>
-
-                    </div>
-
-                </div>
 
             </div>
 
@@ -74,7 +51,7 @@
     </div>
 
 
-    <div class="col-sm-9 d-flex justify-content-center" style="height: auto;">
+    <div [ngClass]="identity ? 'col-md-9' : 'col'" style="height: auto;">
 
         <!-- Contenido -->
 
@@ -85,14 +62,14 @@
 
 
 </div>
-<!-- Footer -->
-<footer class="page-footer blue" style="font-weight: bold;">
+
+<footer class="font-weight-bold font-big">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 m-auto">© 2019 Copyright:
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
           <a href="https://www.iessansebastian.com/"> IES San Sebastian</a>
         </div>
         <!-- Copyright -->
       
 </footer>
-      <!-- Footer -->
+<!-- Footer -->

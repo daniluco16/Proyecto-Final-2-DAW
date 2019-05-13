@@ -14,16 +14,21 @@
 
                         <h3 class="register-heading">Registro de Usuarios</h3>
 
-                        <div class="alert alert-success  m-auto text-center" style="top: 220px; width: 500px;" *ngIf="status == 'success'">
+                        <div class="row">
+
+                            <div *ngIf="status == 'success'" class="col-6 col-sm-6 alert alert-success  m-auto text-center" style="top: 220px; width: 500px;">
 
                                 Se ha completado su registro correctamente
 
                             </div>
-                            <div class="alert alert-danger m-auto text-center" style="top: 220px; width: 500px;" *ngIf="status == 'error'">
+                            <div *ngIf="status == 'error'" class="col-6 col-sm-6 alert alert-danger m-auto text-center" style="top: 220px; width: 500px;">
 
                                 No se ha completado su registro correctamente!!
 
                             </div>
+
+                        </div>
+                        
 
                         <div class="row register-form ml-5">
 

@@ -1,9 +1,19 @@
-<div class="container-fluid contact-form" style="width: 130%;">
+<div class="container-fluid contact-form">
     <div class="contact-image">
         <img src="https://image.flaticon.com/icons/svg/1169/1169097.svg" />
     </div>
-    <form #editarForm="ngForm" (ngSubmit)="onSubmit(editarForm);">
+    <form #editarForm="ngForm" (ngSubmit)="onSubmit(editarForm);" enctype="multipart/form-data">
         <h3>Cambiar perfil de Usuario</h3>
+        <div class="alert alert-success text-center" *ngIf="status == 'success'">
+
+            Se ha completado su registro correctamente
+
+        </div>
+        <div class="alert alert-danger text-center" *ngIf="status == 'error'">
+
+            No se ha completado su modificación correctamente!!
+
+        </div>
         <div class="row">
             <div class="col-sm-12">
 
@@ -28,21 +38,29 @@
                 </div>
                 
                 <div class="form-group">
-                    <input type="file" name="image" accept=".jpg, .png" (change)="onUpload($event)" #image="ngModel" [(ngModel)]="user.image" class="form-control" placeholder="Imagen de perfil" />
+                    <input type="file" name="image" (change)="readUrl($event)" accept="image/jpeg, image/png" class="form-control" placeholder="Imagen de perfil" />
+                    <div *ngIf="user.image" class="mt-2 d-flex justify-content-center">
+                        <img style="width: 300px; height: 200px;" *ngIf="!user.image.includes('data')" src="http://proyectofinal.devel/{{user.image}}">
+                        <img style="width: 300px; height: 200px;" *ngIf="user.image.includes('data')" src="{{user.image}}">
+                    </div>
+                   <div class="d-flex justify-content-center">
+                    <img style="width: 300px; height: 200px;" *ngIf="!user.image" src="https://image.flaticon.com/icons/svg/265/265674.svg">
+                   </div>
+
                 </div>
 
                 <div class="row">
 
-                    <div class="col-sm-6">
+                    <div class="col-6 col-sm-6">
 
                         <div class="form-group text-center">
-                            <input type="submit" name="btnSubmit" class="btnContact"
+                            <input type="submit" name="btnSubmit" class="btn btn-danger btnContact"
                                 value="Actualizar usuario" />
                         </div>
 
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-6 col-sm-6">
 
                         <div class="form-group text-center">
                             <a [routerLink]="['../../']" class="btn btn-primary" id="btnVolver">Volver</a>

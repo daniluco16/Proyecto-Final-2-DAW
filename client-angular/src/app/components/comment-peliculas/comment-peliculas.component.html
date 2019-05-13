@@ -1,20 +1,20 @@
 <div class="container-fluid ">
   <div class="row mt-5 mb-3">
 
-    <div class="col-6">
+    <div class="col-6 col-sm-6 d-flex justify-content-center">
       <img style="border: 8px whitesmoke; border-style: double;" width=300 height="300" src="https://lh3.googleusercontent.com/GmwM-Je6w6rjlKChT4JkBWmBNFvvbGXKPKceMN8cpFQYOIjjKfny84m2bfIEIbPWohFrUw=s85">
     </div>
 
-    <div class="col-6 form-group">
+    <div class="col-6 col-sm-6 form-group">
 
       <label for="comentario" style="color: white;">Comentario de la película:</label>
       <textarea class="form-control" rows="5" id="comentario"></textarea>
 
       <div>
-          <input class="btn btn-info font-weight-bold mr-5 mt-5" type="submit"
+          <input class="btn btn-danger font-weight-bold mr-5 mt-5" type="submit"
           value="Realizar Comentario">
 
-          <a class="btn btn-secondary font-weight-bold mt-5" [routerLink]="['../']">Volver</a>
+          <a class="btn btn-primary font-weight-bold mt-5" [routerLink]="['../']">Volver</a>
       </div>
      
     </div>

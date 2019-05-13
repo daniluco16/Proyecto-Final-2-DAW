@@ -168,11 +168,13 @@ class UserController extends Controller
 
         $validacion = json_decode($json, true);
 
+
+
         $validate = \Validator::make($validacion, [
 
             'name' => 'required|min:3',
             'surname' => 'required|min:3',
-            'email' => 'required|min:5|unique:users',
+            'email' => 'required|min:5|email|unique:users',
             'nick' => 'required|min:3|unique:users',
             'password' => 'required|min:6'
         ]);
@@ -191,30 +193,34 @@ class UserController extends Controller
         $email = (!is_null($json) && isset($params->email)) ? $params->email : null;
         $nick = (!is_null($json) && isset($params->nick)) ? $params->nick : null;
         $password = (!is_null($json) && isset($params->password)) ? $params->password : null;
+
         $image = $params->image;
 
+       
         if(!is_null($name) && !is_null($surname) && !is_null($email) && !is_null($nick) && !is_null($password)){
 
             if(!is_null($image)){
 
-                if(strpos($image, 'data:image/png;base64') !== false){
+                if(strpos($image, 'data:image/png;base64') !== false)
+                    {
+                        $image = str_replace('data:image/png;base64,', '', $image);
+                        $image = str_replace(' ', '+', $image);
+                        $imageName = str_random(10).'.'.'png';
+                        \File::put(public_path().'/'. $imageName, base64_decode($image));
 
-                    $image = str_replace('data:image/png;base64,','',$image);
-                    $image = str_replace(' ', '+', $image);
-                    $imageName = str_random(10).'.'.'png';
-                    \File::put(public_path(). '/avatar/' . $imageName, base64_decode($image));
-
-                }
-                if(strpos($image, 'data:image/jpeg;base64') !== false)
+                    }
+                    
+                    if(strpos($image, 'data:image/jpeg;base64') !== false)
                     {
                         $image = str_replace('data:image/jpeg;base64,', '', $image);
                         $image = str_replace(' ', '+', $image);
                         $imageName = str_random(10).'.'.'jpg';
-                        \File::put(public_path(). '/avatar/' . $imageName, base64_decode($image));
+                        \File::put(public_path() .'/'. $imageName, base64_decode($image));
+
                     }
 
             }
-
+        
             //Crear el usuario 
 
             $user = new User();
@@ -223,13 +229,11 @@ class UserController extends Controller
             $user->email = $email;
             $user->nick = $nick;
             $user->rol = 'Usuario';
-            
-            if(isset($imageName)){
 
+            if(isset($imageName))
+            {
                 $user->image = $imageName;
-
             }
-
 
             $pwd = hash('sha256', $password);
 
@@ -253,7 +257,7 @@ class UserController extends Controller
                 );
 
 
-            }elseif(!is_null($isset_user)){
+            }else if(!is_null($isset_user)){
 
                 //No guardar ya existe
 
@@ -364,7 +368,7 @@ class UserController extends Controller
 
                 'name' => 'required|min:3',
                 'surname' => 'required|min:3',
-                'email' => 'required|min:5|unique:users,email,'. $id,
+                'email' => 'required|min:5|email|unique:users,email,'. $id,
                 'nick' => 'required|min:3|unique:users,nick,'. $id,
                 'password' => 'required|min:6'
             ]);
@@ -374,6 +378,9 @@ class UserController extends Controller
                 return response()->json($validate->errors(), 400);
     
             }
+
+            $image = $params->image;
+
 
             if(!isset($params_array['password']))
             {
@@ -390,11 +397,46 @@ class UserController extends Controller
             unset($params_array['id']);
             unset($params_array['created_at']);
             unset($params_array['rol']);
-            
-            
-            
 
+            $imageUser = User::find($id);
+
+            if($params_array['image'] == $imageUser->image){
+
+                unset($params_array['image']);
+
+            }else{
+
+                if(strpos($image, 'data:image/png;base64') !== false)
+                {
+                    $image = str_replace('data:image/png;base64,', '', $image);
+                    $image = str_replace(' ', '+', $image);
+                    $imageName = str_random(10).'.'.'png';
+                    \File::put(public_path().'/'. $imageName, base64_decode($image));
+
+                }
+                    
+                if(strpos($image, 'data:image/jpeg;base64') !== false)
+                {
+                    $image = str_replace('data:image/jpeg;base64,', '', $image);
+                    $image = str_replace(' ', '+', $image);
+                    $imageName = str_random(10).'.'.'jpg';
+                    \File::put(public_path() .'/'. $imageName, base64_decode($image));
+                }
+
+                if(!is_null($imageUser->image)){
+
+                    $path = public_path().'/'. $imageUser->image;
+                    unlink($path);
+
+                }
+
+                $params_array['image'] = $imageName;
+            }
+
+            
+            
             $user = User::where('id', $id)->update($params_array);
+
 
             $data = array(
 

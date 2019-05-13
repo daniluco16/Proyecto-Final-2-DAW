@@ -6,11 +6,18 @@ table{
 thead{
     background-color: #f05837;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
+    size: 30px;
     text-align: center;
 }
 tr{
     text-align: center;
+}
+#ver {
+    color: blue;
+}
+#ver:hover {
+    color: lightskyblue;
 }
 #borrar{
     color: red;
@@ -22,7 +29,7 @@ tr{
     color: green;
 }
 #editar:hover{
-    color: darkgreen;
+    color: lightseagreen;
 }
 i{
 

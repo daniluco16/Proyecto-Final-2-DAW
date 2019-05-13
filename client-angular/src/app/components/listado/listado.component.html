@@ -5,14 +5,12 @@
 </style>
 
 <div class="container">
-  <div class="row  d-flex justify-content-center" *ngIf="users">
-
+  <div class="row d-flex justify-content-center" *ngIf="users">
     <div class="col-sm-12  d-flex justify-content-center">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col"><a *ngIf="identity.rol == 'Admin'" [routerLink]="['crear']" id="añadir"><i
-                  class="fas fa-plus"></i></a>Nick</th>
+            <th scope="col"><a *ngIf="identity.rol == 'Admin'" [routerLink]="['crear']" id="añadir"><i class="fas fa-plus"></i></a>Nick</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Correo</th>
@@ -58,7 +56,7 @@
 
 
 
-  <div class="row" *ngIf="!users">
+  <div class="row d-flex justify-content-center" *ngIf="!users">
     <img src="https://www.cedd.net/img/loading.gif">
 
   </div>

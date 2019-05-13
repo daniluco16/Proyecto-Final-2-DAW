@@ -11,6 +11,11 @@ body{
 }
 
 
+footer{
+
+    color: black;
+}
+
 .content{
 
     background: -webkit-linear-gradient(left, #f05837,#282726);
@@ -19,9 +24,7 @@ body{
 
  *{
     font-family:'Open Sans',sans-serif;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
+
 }
 .jquery-accordion-menu ul{
     margin:0;
@@ -52,7 +55,7 @@ li{
 }
 
 img{
-    width: 50px;
+    width: 70px;
     height: 50px;
     border-radius: 999px solid black;
 }
@@ -64,13 +67,10 @@ img{
     text-decoration:none;
     color:#f0f0f0;
     font-size:15px;
-    white-space:nowrap;
-    overflow:hidden;
     
 }
 .jquery-accordion-menu>ul>li.active>a,.jquery-accordion-menu>ul>li:hover>a{
     color:#fff;
-    background:#3b424d;
 }
 .jquery-accordion-menu>ul>li>a{
     border-bottom:solid 1px #3b424d;

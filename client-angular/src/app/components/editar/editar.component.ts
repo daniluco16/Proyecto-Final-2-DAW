@@ -5,7 +5,7 @@ import { User } from '../../models/user';
 
 @Component({
   selector: 'app-editar',
-  templateUrl: '../crear-user/crear-user.component.html',
+  templateUrl: './editar.component.html',
   styleUrls: ['./editar.component.css'],
   providers: [UserService]
 })
@@ -15,6 +15,7 @@ export class EditarComponent implements OnInit {
   public user: User;
   public status: string;
   public token;
+  public url: any;
 
   constructor(
 
@@ -29,6 +30,7 @@ export class EditarComponent implements OnInit {
     this.title = 'Editar usuario';
 
     this.token = this._userService.getToken();
+
 
     this.user = new User(1, '', '', '', '', '', '', '');
 
@@ -51,11 +53,21 @@ export class EditarComponent implements OnInit {
 
   }
 
-  onUpload(e){
+  readUrl(event:any) 
+  {
+      if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
 
-    console.log('subir', e);
+        reader.onload = (event: ProgressEvent) => {
+           this.url = (<FileReader>event.target).result;
+           this.user.image = this.url;
+        }
 
+        reader.readAsDataURL(event.target.files[0]);
+         (event.target.files[0]);
+      }
   }
+
 
   getUser(id){
 
@@ -77,6 +89,8 @@ export class EditarComponent implements OnInit {
           error => {
 
             console.log(<any>error);
+
+            this.status = 'error';
           }
         );
   }

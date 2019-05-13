@@ -1,13 +1,10 @@
-<div class="row" style="height: 50%; margin-top: 20%;">
 
-  <div class="col-auto">
-
-    <div class="w-100 d-flex justify-content-center">
+    <div class="w-100 d-flex justify-content-center mt-5">
 
       <div class="card" style="width:400px">
 
         <img *ngIf="!user.image" class="card-img-top" src="https://image.flaticon.com/icons/svg/265/265674.svg" alt="da">
-        <img *ngIf="user.image" class="card-img-top" src="{{user.image}}" alt="da">
+        <img *ngIf="user.image"  class="card-img-top" src="http://proyectofinal.devel/{{user.image}}" alt="da">
 
         <div class="card-body">
           <label>Nombre de Usuario: <strong>{{user.nick}}</strong></label>
@@ -34,7 +31,3 @@
         </div>
       </div>
     </div>
-
-  </div>
-
-</div>

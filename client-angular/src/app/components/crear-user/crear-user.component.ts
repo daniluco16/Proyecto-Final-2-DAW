@@ -85,6 +85,8 @@ export class CrearUserComponent implements OnInit {
 
         console.log(<any>error);
 
+        this.status = 'error';
+
       }
 
     );
@@ -105,6 +107,7 @@ export class CrearUserComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
        (event.target.files[0]);
     }
+    
 
   }
 
