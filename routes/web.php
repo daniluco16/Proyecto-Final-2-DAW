@@ -25,5 +25,8 @@ Route::put('/api/update/{id}', 'UserController@update');
 Route::delete('/api/destroy/{id}', 'UserController@destroy');
 Route::put('/api/changeRol/{id}', 'UserController@changeRol');
 
+Route::post('/api/crearComment', 'CommentController@crearComentario');
+
+
 
 

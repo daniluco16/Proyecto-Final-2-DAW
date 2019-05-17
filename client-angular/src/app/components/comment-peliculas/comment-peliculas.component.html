@@ -1,48 +1,63 @@
 <div class="container-fluid ">
-  <div class="row mt-5 mb-3">
+  <form enctype="multipart/form-data" #CrearComentarioForm="ngForm" (ngSubmit)="onSubmit(CrearComentarioForm);">
 
-    <div class="col-6 col-sm-6 d-flex justify-content-center">
-      <img style="border: 8px whitesmoke; border-style: double;" width=300 height="300" src="https://lh3.googleusercontent.com/GmwM-Je6w6rjlKChT4JkBWmBNFvvbGXKPKceMN8cpFQYOIjjKfny84m2bfIEIbPWohFrUw=s85">
-    </div>
+    <div class="alert alert-success text-center w-100 mt-3" *ngIf="status == 'success'">
 
-    <div class="col-6 col-sm-6 form-group">
+      Se ha completado su registro correctamente
 
-      <label for="comentario" style="color: white;">Comentario de la película:</label>
-      <textarea class="form-control" rows="5" id="comentario"></textarea>
+  </div>
+  <div class="alert alert-danger text-center w-100 mt-3" *ngIf="status == 'error'">
 
-      <div>
-          <input class="btn btn-danger font-weight-bold mr-5 mt-5" type="submit"
-          value="Realizar Comentario">
+      No se ha completado su registro correctamente!!
+
+  </div>
+
+    <div class="row mt-5 mb-3">
+
+      <div class="col-6 col-sm-6 d-flex justify-content-center">
+        <img style="border: 8px whitesmoke; border-style: double;" width=350 height="400"
+          src="https://lh3.googleusercontent.com/GmwM-Je6w6rjlKChT4JkBWmBNFvvbGXKPKceMN8cpFQYOIjjKfny84m2bfIEIbPWohFrUw=s85">
+      </div>
+
+      <div class="col-6 col-sm-6 form-group">
+
+        <label for="comentario" style="color: white;">Comentario de la película:</label>
+        <textarea name="contenido" #contenido="ngModel" [(ngModel)]="comment.contenido" class="form-control" rows="5" id="comentario"></textarea>
+
+        <div>
+          <input class="btn btn-danger font-weight-bold mr-5 mt-5" type="submit" value="Realizar Comentario">
 
           <a class="btn btn-primary font-weight-bold mt-5" [routerLink]="['../']">Volver</a>
+        </div>
+
       </div>
-     
+
+
     </div>
 
-
-  </div>
-
-  <div class="row mb-3 d-flex justify-content-center">
-    <div class="col-8">
-      <div class="card card-white post">
-        <div class="post-heading">
-          <div class="float-left image">
-            <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-          </div>
-          <div class="float-left meta">
-            <div class="title h5">
-              <a href="#"><b>Ryan Haywood</b></a>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-8">
+        <div class="card card-white post">
+          <div class="post-heading">
+            <div class="float-left image">
+              <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
             </div>
-            <h6 class="text-muted time">1 minute ago</h6>
+            <div class="float-left meta">
+              <div class="title h5">
+                <a href="#"><b>Ryan Haywood</b></a>
+              </div>
+              <h6 class="text-muted time">1 minute ago</h6>
+            </div>
+          </div>
+          <div class="post-description">
+            <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js
+              framework. Codes for developers and web designers</p>
+
           </div>
         </div>
-        <div class="post-description">
-          <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js
-            framework. Codes for developers and web designers</p>
-
-        </div>
       </div>
-    </div>
 
-  </div>
+    </div>
+  </form>
+
 </div>

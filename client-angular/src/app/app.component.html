@@ -33,7 +33,7 @@
 
                 <ul id="menu">
                     <li *ngIf="identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img src="http://proyectofinal.devel/{{identity.image}}"
-                                style="margin-right: 50px;">Bienvenido {{ identity.nick }}</a></li>
+                                style="margin-right: 50px;border: 3px solid black; border-radius: 200px;">Bienvenido {{ identity.nick }}</a></li>
                     <li *ngIf="!identity.image" class="active"><a [routerLink]="['listadoUser/detalle', identity.sub]"><img
                                 src="https://image.flaticon.com/icons/svg/265/265674.svg"
                                 style="margin-right: 50px;">Bienvenido {{ identity.nick }}</a></li>

@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\JwtAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
-
+        'Tmdb\Laravel\TmdbServiceProvider',
 
     ],
 

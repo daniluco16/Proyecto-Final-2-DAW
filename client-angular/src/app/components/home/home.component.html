@@ -1,31 +1,48 @@
-<div class="container d-flex justify-content-center row" style="width: 100%; margin: auto;">
+<style>
+        .my-pagination /deep/ .ngx-pagination .current {
+          background: #e35536;
+        }
+      </style>
 
-    <div class="col-12">
-
-        <div class="container" id="cont">
-            <div class="d-flex justify-content-center">
-                <div class="searchbar" style="border: 3px solid #e35536;">
-                    <input class="search_input" type="text" name="busqueda" placeholder="Búsqueda...">
-                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                </div>
+<div class="container row justify-content-center" style="margin: auto;">
+    <form enctype="multipart/form-data" #findForm="ngForm" (ngSubmit)="onSubmit(findForm);">
+        <div id="cont" class="d-flex justify-content-center">
+            <div class="searchbar" style="border: 3px solid #e35536;">
+                <input class="search_input" type="text" name="input" id="valor" [(ngModel)]="input" placeholder="Búsqueda...">
+                <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
             </div>
         </div>
+    </form>
 
-        <div class="movie-card" style="border: 5px solid #e35536;">
+    <div class="col-md-12 col-sm-10">
+
+        <div *ngFor="let item of movies | paginate: { itemsPerPage: 6, currentPage: p}" class="movie-card"
+            style="border: 4px solid #e35536;">
             <div class="movie-header">
                 <div class="header-icon-container">
                     <a [routerLink]="['detallePelicula']">
-                        <img
-                            src="https://i.pinimg.com/236x/1d/7d/80/1d7d80e1ec3beb5d808d5d16fb757007--harry-potter-movies-harry-potter-affiche.jpg">
+                        
+                        <img id="pelis" src="{{item.poster_path}}" alt="Image not found">
                     </a>
                 </div>
             </div>
             <!--movie-header-->
             <div class="movie-content">
                 <div class="movie-content-header">
-                    <a href="#">
-                        <h3 class="movie-title">Man of Steel</h3>
-                    </a>
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <a href="#">
+                                <h3 class="movie-title">{{item.title}}</h3>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>{{item.vote_average}}</strong>
+                            <img width="15px" class="ml-2" src="https://image.flaticon.com/icons/svg/1660/1660204.svg">
+                        </div>
+
+                    </div>
+
                 </div>
                 <div class="movie-info">
                     <div class="row">
@@ -38,81 +55,14 @@
                         </div>
 
                     </div>
+
                 </div>
             </div>
-            <!--movie-content-->
+            
         </div>
-        <!--movie-card-->
-
-        <div class="movie-card" style="border: 5px solid #e35536;">
-            <div class="movie-header">
-                <div class="header-icon-container">
-                    <a href="#">
-                        <img src="https://www.thepocketmagazine.com/wp-content/uploads/2018/05/TW_poster.jpg">
-                    </a>
-                </div>
-            </div>
-            <!--movie-header-->
-            <div class="movie-content">
-                <div class="movie-content-header">
-                    <a href="#">
-                        <h3 class="movie-title">Baby Driver</h3>
-                    </a>
-                    <div class="imax-logo"></div>
-                </div>
-                <div class="movie-info">
-
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <a href="#">Comentar <i class="fas fa-comment-dots"></i></a>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="#"><i class="fas fa-crown"></i></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!--movie-content-->
-        </div>
-        <!--movie-card-->
-
-
-        <div class="movie-card" style="border: 5px solid #e35536;">
-            <div class="movie-header">
-                <div class="header-icon-container">
-                    <a href="#">
-                        <img src="http://www.caratulasylogos.com/sites/default/files/caratulas/300.jpg">
-                    </a>
-                </div>
-            </div>
-            <!--movie-header-->
-            <div class="movie-content">
-                <div class="movie-content-header">
-                    <a href="#">
-                        <h3 class="movie-title">Blade Runner 2049</h3>
-                    </a>
-                    <div class="imax-logo"></div>
-                </div>
-                <div class="movie-info">
-                    <div class="row">
-
-                        <div class="col-sm-9">
-                            <a href="#">Comentar <i class="fas fa-comment-dots"></i></a>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="#"><i class="fas fa-crown"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--movie-content-->
-        </div>
-        <!--movie-card-->
-
+        <pagination-controls class="d-flex justify-content-center my-pagination" (pageChange)="p = $event" responsive="true"
+                previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
     </div>
-
-
 </div>
 <!--container-->

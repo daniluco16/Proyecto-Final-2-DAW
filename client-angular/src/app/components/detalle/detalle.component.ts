@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { identity } from 'rxjs';
 
 @Component({
   selector: 'app-detalle',
@@ -30,6 +31,13 @@ export class DetalleComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    if(identity == null){
+
+      this._router.navigate(['/login']);
+
+
+    }
 
     console.log('detalle.component cargado correctamente');
 

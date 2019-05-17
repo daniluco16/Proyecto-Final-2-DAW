@@ -25,6 +25,7 @@ const appRoutes: Routes = [
     {path:'home/detallePelicula', component: DetallePeliculaComponent},
     {path:'home/comments', component: CommentPeliculasComponent},
     {path:'registro', component: RegisterComponent},
+    {path:'crearComment', component: CommentPeliculasComponent},
     {path:'listadoUser', component: ListadoComponent},
     {path:'listadoUser/detalle/:id', component: DetalleComponent},
     {path:'listadoUser/editar/:id', component: EditarComponent},
