@@ -3,8 +3,8 @@
 
       <div class="card" style="width:400px">
 
-        <img *ngIf="!user.image" class="card-img-top" src="https://image.flaticon.com/icons/svg/265/265674.svg" alt="da">
-        <img *ngIf="user.image"  class="card-img-top" src="http://proyectofinal.devel/{{user.image}}" alt="da">
+        <img *ngIf="!user?.image" class="card-img-top" src="https://image.flaticon.com/icons/svg/265/265674.svg" alt="Image not Found">
+        <img *ngIf="user?.image"  class="card-img-top" src="http://proyectofinal.devel/{{user.image}}" alt="Image not Found">
 
         <div class="card-body">
           <label>Nombre de Usuario: <strong>{{user.nick}}</strong></label>

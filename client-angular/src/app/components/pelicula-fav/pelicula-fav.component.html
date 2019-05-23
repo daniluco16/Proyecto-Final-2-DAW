@@ -4,11 +4,12 @@
 
       <div class="container" id="cont">
           <div class="d-flex justify-content-center">
-              <h3 class="font-weight-bold" style="color: white; text-shadow: 2px 2px orange;">PELÍCULAS FAVORITAS</h3>
+              <h3 class="font-weight-bold" style="color: white;"><img class="mr-3" width="50px;" style="max-width: 50px;" src="https://image.flaticon.com/icons/svg/1049/1049224.svg">PELÍCULAS FAVORITAS</h3>
+              
           </div>
       </div>
-
-      <div class="movie-card" style="border: 5px solid #e35536;">
+      <hr style="background-color: white;">
+      <div class="movie-card" style="border: 3px solid #e35536;">
           <div class="movie-header">
               <div class="header-icon-container">
                   <a [routerLink]="['../home/detallePelicula']">
@@ -27,9 +28,12 @@
               <div class="movie-info">
                   <div class="row">
 
-                      <div class="col-sm-9">
+                      <div class="col col-sm-8">
                           <a [routerLink]="['../home/comments']">Comentar <i class="fas fa-comment-dots"></i></a>
-                      </div>                    
+                      </div>        
+                      <div class="col col-sm-4">
+                        <a href="#" class="d-flex justify-content-end"><img width="25px;" style="max-width: 25px;" src="https://image.flaticon.com/icons/svg/291/291204.svg"></a>
+                      </div>            
                   </div>
               </div>
           </div>

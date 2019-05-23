@@ -5,9 +5,8 @@ export class Comment{
         public id: number,
         public User_id: number,
         public Film_id: number,
-        public creador: string,
-        public contenido: string
-
+        public contenido: string,
+        public created_at: string
         
     ){}
 

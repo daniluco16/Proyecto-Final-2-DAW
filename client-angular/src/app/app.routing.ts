@@ -18,14 +18,14 @@ import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.com
 
 const appRoutes: Routes = [
 
-    {path:'', component: LoginComponent},
+    {path:'', component: HomeComponent},
     {path:'login', component: LoginComponent},
     {path:'logout/:sure', component: LoginComponent},
     {path:'home', component: HomeComponent},
-    {path:'home/detallePelicula', component: DetallePeliculaComponent},
-    {path:'home/comments', component: CommentPeliculasComponent},
+    {path:'home/detallePelicula/:id', component: DetallePeliculaComponent},
+    {path:'movie/:id/comments', component: CommentPeliculasComponent},
     {path:'registro', component: RegisterComponent},
-    {path:'crearComment', component: CommentPeliculasComponent},
+    // {path:'crearComment', component: CommentPeliculasComponent},
     {path:'listadoUser', component: ListadoComponent},
     {path:'listadoUser/detalle/:id', component: DetalleComponent},
     {path:'listadoUser/editar/:id', component: EditarComponent},

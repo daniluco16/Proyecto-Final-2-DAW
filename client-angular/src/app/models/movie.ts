@@ -9,8 +9,7 @@ export class Movie{
         public trailer: string,
         public overview: string,
         public popularity: string,
-        public vote_average: string
-
+        public vote_average: string,
         
     ){}
 

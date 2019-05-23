@@ -180,14 +180,13 @@ body {
     border: 0;
     background: none;
     width: 0;
-    caret-color:transparent;
-    line-height: 40px;
+    caret-color:black;
+    line-height: 30px;
     }
 
     .searchbar:hover > .search_input{
     padding: 0 10px;
     width: 420px;
-    caret-color:red;
     transition: width 0.4s linear;
     }
 
@@ -204,7 +203,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color:white;
+    color:#e74c3c;
     }
     #cont{
 

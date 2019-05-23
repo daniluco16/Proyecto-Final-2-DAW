@@ -26,6 +26,11 @@ Route::delete('/api/destroy/{id}', 'UserController@destroy');
 Route::put('/api/changeRol/{id}', 'UserController@changeRol');
 
 Route::post('/api/crearComment', 'CommentController@crearComentario');
+Route::get('/api/listadoComment/{id}', 'CommentController@listarComentarios');
+Route::delete('/api/deleteComment/{id}', 'CommentController@deleteComment');
+
+
+
 
 
 

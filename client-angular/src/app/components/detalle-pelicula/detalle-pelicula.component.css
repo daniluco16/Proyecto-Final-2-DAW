@@ -7,12 +7,24 @@
   margin: 0;
 }
 
+h3{
+  font-weight: bold;
+}
+
 html, body{
   margin: 0;
   background: white;
   font-family: 'Montserrat', helvetica, arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
+}
+
+.fa{
+  color: gold;
+}
+
+.fa:hover{
+  color: goldenrod;
 }
 
 .link{
@@ -27,7 +39,7 @@ html, body{
   position: relative;
   display: block;
   width: 800px;
-  height: 350px;
+  height: 500px;
   margin: 80px auto; 
   overflow: hidden;
   border-radius: 10px;
@@ -77,9 +89,13 @@ html, body{
         box-shadow: 0 0 20px -10px rgba(0,0,0,0.5);
       }
     
+      .rat{
+        font-weight: bold;
+
+      }
+
     .movie_desc{
-      padding: 25px;
-      height: 50%;
+      padding: 10px;
     }
       .text{
         color: #545454;
@@ -130,11 +146,15 @@ html, body{
   .info_section{
     background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
   }
-  
-  .blur_back{
-    width: 80%;
-    background-position:  100% !important;  
-  }
+
+}
+.modal {
+  position: fixed;
+  background: rgba(0,0,0,0.7);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -165,8 +185,8 @@ html, body{
 }
 
 
-.bright_back{
-  background: url("https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg");
+#fondo{
+  /* background: url("movie.poster_path"); */
 }
 
 a{

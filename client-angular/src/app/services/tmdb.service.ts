@@ -26,7 +26,7 @@ export class tmdbService{
 
         let headers =  new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-        return this._http.get(`${this.apiUrl}discover/movie?api_key=${GLOBAL.apikey}&sort_by=popularity.desc&page=1&primary_release_date=${year}`,{headers});
+        return this._http.get(`${this.apiUrl}discover/movie?api_key=${GLOBAL.apikey}&sort_by=popularity.desc&page=1&primary_release_date=${year}&year=${year}`,{headers});
 
     }
 
@@ -35,6 +35,16 @@ export class tmdbService{
         let headers =  new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
         return this._http.get(`${this.apiUrl}search/movie?api_key=${GLOBAL.apikey}&query=${query}`,{headers});
+
+    }
+
+    getDetalleMovie(id): Observable<any>{
+
+
+        let headers =  new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.get(`${this.apiUrl}movie/${id}?api_key=${GLOBAL.apikey}&append_to_response=videos`, {headers});
+
 
     }
 

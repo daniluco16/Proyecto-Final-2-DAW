@@ -18,7 +18,6 @@ import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-
 import { CommentPeliculasComponent } from './components/comment-peliculas/comment-peliculas.component';
 import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +30,7 @@ import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.com
     CrearUserComponent,
     DetallePeliculaComponent,
     CommentPeliculasComponent,
-    PeliculaFavComponent,
+    PeliculaFavComponent
   ],
   imports: [
     BrowserModule,

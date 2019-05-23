@@ -5,54 +5,69 @@
 		<div class="movie_card d-flex justify-content-center" style="width: 1000px;height: 500px;" id="bright">
 			<div class="info_section">
 				<div class="movie_header">
-					<img class="locandina"
-						src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg" />
-					<h1>Bright</h1>
-					<h4>2017, David Ayer</h4>
-					<span class="minutes">117 min</span>
-					<p class="type">Action, Crime, Fantasy</p>
+					<img class="locandina" src="{{movie?.poster_path}}"/>
+					<h3>{{movie?.title}}</h3>
+					<h4>{{movie?.release_date}}, {{movie?.production_companies[0]?.name}}</h4>
+					<span *ngIf="movie?.runtime != null" class="minutes">{{movie?.runtime}} min</span>
+					<span *ngIf="movie?.runtime == null" class="minutes">Sin límite</span>
+
+					<p *ngIf="movie?.genres.length != 0" class="type">{{movie?.genres[0]?.name}}, {{movie?.genres[1]?.name}}, {{movie?.genres[2]?.name}}</p>
+					<p *ngIf="movie?.genres.length == 0" class="type">Sin Especificar</p>
+
 				</div>
-				<div class="p-5">
-					<a href="#" style="text-decoration: none;"><img width="30px"class="mr-2" src="https://image.flaticon.com/icons/svg/226/226236.svg">Ver trailer</a>
-				</div>
-				<div class="movie_desc">
-					<p class="text">
-						Set in a world where fantasy creatures live side by side with humans. A human cop is forced to
-						work with an Orc to find a weapon everyone is prepared to kill for.
-					</p>
+				<div class="row pl-5 pb-3">
+					<div class="rat col-md-3 col-sm-12">
+						Rating: {{movie?.vote_average}}
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+					</div>
 				</div>
 				
+				<div class="row pl-5">
+					<div class="col-md-3 col-sm-12">
+						<a *ngIf="key" href="#" id="videobtn" data-toggle="modal" data-target="#myModal" style="text-decoration: none;"><img
+								width="30px" class="mr-2" src="https://image.flaticon.com/icons/svg/226/226236.svg">Ver trailer</a>
+					</div>
+
+					<div class="col-md-3">
+						<a *ngIf="movie?.homepage" href="{{movie?.homepage}}" style="text-decoration: none;"><img width="30px" class="mr-2"
+								src="https://www.flaticon.com/premium-icon/icons/svg/296/296381.svg">Web</a>
+					</div>
+				</div>
+
+				<div class="row movie_desc">
+					<p class="col-md-12 col-sm-12" style="font-size: 15px;">
+						{{movie?.overview}}
+					</p>
+				</div>
+
 			</div>
-			<div class="blur_back bright_back"></div>
+			<div class="blur_back" id="fondo">
+				<img width="500px" src="{{movie?.poster_path}}">
+			</div>
 		</div>
+
 
 	</div>
 
 </div>
-
-
-
-
-<!-- <div class="container-fluid">
-		<div class="card">
-			<div class="container-fliud">
-				<div class="wrapper row">
-					<div class="preview col-md-6">
-						
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-						</div>							
-					</div>
-					<div class="details col-md-6">
-						<h3 class="product-title">Info de </h3>
-					
-					
-						<div class="action">
-							<a [routerLink]="['../']" class="add-to-cart btn btn-default mr-2" type="button">Volver al Listado</a>
-							<a class="like btn btn-default" type="button"><span class="fas fa-crown"></span></a>
-						</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document" style="margin: auto; padding-top: 10%;">
+					<div class="modal-content" style="width: 900px;height: 500px;">
+			
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+			
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe *ngIf="key" class="embed-responsive-item" [src]=key id="video" allowscriptaccess="always"
+									allow="autoplay"></iframe>
+							</div>
+			
 					</div>
 				</div>
 			</div>
-		</div>
-	</div> -->

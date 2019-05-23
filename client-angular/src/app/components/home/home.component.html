@@ -4,25 +4,33 @@
         }
       </style>
 
+<div class="row justify-content-center mt-2">
+    <div class="col-auto col-sm-12 d-flex justify-content-center">
+        <h2 style="color: white; font-weight: bold;"><img width="50px;" class="mr-3" src="https://image.flaticon.com/icons/svg/199/199552.svg">Novedades</h2>
+    </div>
+</div>
+
+
 <div class="container row justify-content-center" style="margin: auto;">
+    
     <form enctype="multipart/form-data" #findForm="ngForm" (ngSubmit)="onSubmit(findForm);">
-        <div id="cont" class="d-flex justify-content-center">
+        <div id="cont">
             <div class="searchbar" style="border: 3px solid #e35536;">
-                <input class="search_input" type="text" name="input" id="valor" [(ngModel)]="input" placeholder="Búsqueda...">
+                <input class="search_input" type="text" style="border: 0;" name="input" id="valor" [(ngModel)]="input" placeholder="Búsqueda...">
                 <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </form>
-
+    
     <div class="col-md-12 col-sm-10">
 
         <div *ngFor="let item of movies | paginate: { itemsPerPage: 6, currentPage: p}" class="movie-card"
             style="border: 4px solid #e35536;">
             <div class="movie-header">
                 <div class="header-icon-container">
-                    <a [routerLink]="['detallePelicula']">
+                    <a [routerLink]="['detallePelicula', item.id]">
                         
-                        <img id="pelis" src="{{item.poster_path}}" alt="Image not found">
+                        <img id="pelis" src="{{item?.poster_path}}" alt="Image not found">
                     </a>
                 </div>
             </div>
@@ -33,11 +41,11 @@
 
                         <div class="col-md-8">
                             <a href="#">
-                                <h3 class="movie-title">{{item.title}}</h3>
+                                <h3 class="movie-title">{{item?.title}}</h3>
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <strong>{{item.vote_average}}</strong>
+                            <strong>{{item?.vote_average}}</strong>
                             <img width="15px" class="ml-2" src="https://image.flaticon.com/icons/svg/1660/1660204.svg">
                         </div>
 
@@ -48,7 +56,7 @@
                     <div class="row">
 
                         <div class="col col-sm-8">
-                            <a [routerLink]="['comments']">Comentar <i class="fas fa-comment-dots"></i></a>
+                            <a [routerLink]="['/movie', item.id, 'comments']">Comentar <i class="fas fa-comment-dots"></i></a>
                         </div>
                         <div class="col col-sm-4">
                             <a href="#" class="d-flex justify-content-end"><i class="fas fa-crown"></i></a>

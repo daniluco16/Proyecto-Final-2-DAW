@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
+import { DomSanitizer} from '@angular/platform-browser';
 import { UserService } from '../../services/user.service';
 import { tmdbService } from '../../services/tmdb.service';
 import { identity } from 'rxjs';
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
 
 
   public title: string;
-  public movie: Movie;
+  public key;
+  public movie;
   public movies: Array<any>;
   public token;
   public identity;
@@ -30,7 +32,8 @@ export class HomeComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _tmdbService: tmdbService
+    private _tmdbService: tmdbService,
+    private sanitizer: DomSanitizer
 
 
   ) {
@@ -46,12 +49,7 @@ export class HomeComponent implements OnInit {
 
       this._router.navigate(['/login']);
 
-
     }
-
-    
-
-    console.log('home.component cargado correctamente');
     
     this.getPeliculas();
   }
@@ -62,7 +60,6 @@ export class HomeComponent implements OnInit {
 
       response => {
 
-        console.log(response);
         this.movies = response['results'];
 
         this.movies.forEach(movie => {
