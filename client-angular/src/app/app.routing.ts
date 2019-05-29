@@ -25,12 +25,11 @@ const appRoutes: Routes = [
     {path:'home/detallePelicula/:id', component: DetallePeliculaComponent},
     {path:'movie/:id/comments', component: CommentPeliculasComponent},
     {path:'registro', component: RegisterComponent},
-    // {path:'crearComment', component: CommentPeliculasComponent},
     {path:'listadoUser', component: ListadoComponent},
     {path:'listadoUser/detalle/:id', component: DetalleComponent},
     {path:'listadoUser/editar/:id', component: EditarComponent},
     {path:'listadoUser/crear', component: CrearUserComponent},    
-    {path:'listadoFav', component: PeliculaFavComponent},    
+    {path:'listadoFav/:id', component: PeliculaFavComponent},    
     {path:'**', component: LoginComponent}
 
 

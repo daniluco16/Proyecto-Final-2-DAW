@@ -30,13 +30,9 @@
 
           <a class="btn btn-primary font-weight-bold mt-5" [routerLink]="['/home']">Volver</a>
         </div>
-
       </div>
-
-
     </div>
   </form>
-
 
     <div *ngFor="let comment of comments" class="row mb-3 d-flex justify-content-center">
       <div class="col-8">
@@ -44,7 +40,8 @@
           <div class="post-heading">
               <a *ngIf="identity.rol == 'Admin' || comment.User_id == identity.sub" class="float-right" (click)="deleteComment(comment.id)"><img width="20px" src="https://image.flaticon.com/icons/svg/179/179429.svg"></a>
             <div class="float-left image">
-              <img src="http://proyectofinal.devel/{{comment['user'].image}}" style="border-radius: 20px;" class="img-circle avatar" alt="user profile image">
+              <img *ngIf="comment['user'].image" src="http://proyectofinal.devel/{{comment['user'].image}}" style="border-radius: 20px;" class="img-circle avatar" alt="user profile image">
+              <img *ngIf="!comment['user'].image" src="https://image.flaticon.com/icons/svg/265/265674.svg" style="border-radius: 20px;" class="img-circle avatar">
             </div>
             <div class="float-left meta">
               <div class="title h5">

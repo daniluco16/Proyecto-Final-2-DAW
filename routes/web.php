@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Rutas usuarios
 
 Route::post('/api/register', 'UserController@register');
 Route::post('/api/login', 'UserController@login');
@@ -25,9 +26,18 @@ Route::put('/api/update/{id}', 'UserController@update');
 Route::delete('/api/destroy/{id}', 'UserController@destroy');
 Route::put('/api/changeRol/{id}', 'UserController@changeRol');
 
+//Rutas de comentarios
+
 Route::post('/api/crearComment', 'CommentController@crearComentario');
 Route::get('/api/listadoComment/{id}', 'CommentController@listarComentarios');
 Route::delete('/api/deleteComment/{id}', 'CommentController@deleteComment');
+
+//Rutas de Favoritos
+
+Route::post('/api/addFavorito', 'FavoriteController@addFavorito');
+Route::get('/api/listadoFavorito/{id}', 'FavoriteController@listarFavorito');
+Route::delete('/api/deleteFavorito/{id}', 'FavoriteController@deleteFavorito');
+
 
 
 

@@ -85,15 +85,6 @@ class CommentController extends Controller
         $listcomment = Comment::where('Film_id', $id)->get()->load('User');      
 
         return response()->json($listcomment);
-
-        // return response()->json(array(
-
-        //     'comment' => $comment,
-        //     'status' => 'success'
-
-        // ),200);
-
-
     }
 
     public function deleteComment($id, Request $request){

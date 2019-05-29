@@ -43,6 +43,13 @@ export class DetallePeliculaComponent implements OnInit{
 
   ngOnInit() {
 
+    if(this.identity == null){
+
+      this._router.navigate(['/login']);
+
+
+    }
+
     this.getDetail();
 
   }

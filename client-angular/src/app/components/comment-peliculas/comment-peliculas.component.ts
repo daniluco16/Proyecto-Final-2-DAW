@@ -47,12 +47,6 @@ export class CommentPeliculasComponent implements OnInit {
 
   ngOnInit() {
 
-    // if(identity == null){
-
-    //   this._router.navigate(['/login']);
-
-    // }
-
     if(this.identity == null){
 
       this._router.navigate(["/login"]);
@@ -166,27 +160,19 @@ export class CommentPeliculasComponent implements OnInit {
 
           this.getComments();
 
-
-
         } else {
 
 
           this.status = 'error';
 
         }
-
       },
       error => {
 
         console.log(<any>error);
 
         this.status = 'error';
-
       }
-
     );
-
-
   }
-
 }

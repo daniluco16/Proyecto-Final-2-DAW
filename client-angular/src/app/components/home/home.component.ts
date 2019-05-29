@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
+import { Favorite } from 'src/app/models/favorite';
 import { DomSanitizer} from '@angular/platform-browser';
 import { UserService } from '../../services/user.service';
 import { tmdbService } from '../../services/tmdb.service';
@@ -24,9 +25,11 @@ export class HomeComponent implements OnInit {
   public key;
   public movie;
   public movies: Array<any>;
+  public favorite: Favorite;
   public token;
   public identity;
   public input: string = '';
+  public status;
   
   constructor(
     private _route: ActivatedRoute,
@@ -52,7 +55,9 @@ export class HomeComponent implements OnInit {
     }
     
     this.getPeliculas();
+
   }
+
 
   getPeliculas(){
 
@@ -65,6 +70,7 @@ export class HomeComponent implements OnInit {
         this.movies.forEach(movie => {
 
           movie.poster_path = GLOBAL.urlimage+"w200"+movie.poster_path;
+
         });
       },
       error => {
@@ -72,13 +78,39 @@ export class HomeComponent implements OnInit {
         console.log(error);
 
       }
-
      );
+  }
 
+  addFavorite(idfilm){
+
+    this._userService.crearFavorite({'Film_id' : idfilm, 'User_id' : this.identity.sub}).subscribe(
+
+      response => {
+
+        console.log(response);
+
+        if(response.status == 'success'){
+
+          
+
+          this.status = response.status;
+
+        }else{
+
+          this.status = 'error';
+
+        }
+      },
+      error => {
+
+        console.log(error);
+
+        this.status = 'error';
+      }
+    );
   }
 
   onSubmit(form){
-
 
     if(this.input != ''){
 
@@ -110,8 +142,5 @@ export class HomeComponent implements OnInit {
       this.getPeliculas();
 
     }
-
-    
-
   }
 }

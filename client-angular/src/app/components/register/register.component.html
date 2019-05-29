@@ -10,24 +10,26 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+                    <div class="row mt-2">
+
+                        <div *ngIf="status == 'success'" class="col-6 col-sm-6 alert alert-success  m-auto text-center">
+
+                            Se ha completado su registro correctamente
+
+                        </div>
+                        <div *ngIf="status == 'error'" class="col-6 col-sm-6 alert alert-danger m-auto text-center">
+
+                            No se ha completado su registro correctamente!!
+
+                        </div>
+
+                    </div>
+
                     <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm);">
 
                         <h3 class="register-heading">Registro de Usuarios</h3>
 
-                        <div class="row">
-
-                            <div *ngIf="status == 'success'" class="col-6 col-sm-6 alert alert-success  m-auto text-center" style="top: 220px; width: 500px;">
-
-                                Se ha completado su registro correctamente
-
-                            </div>
-                            <div *ngIf="status == 'error'" class="col-6 col-sm-6 alert alert-danger m-auto text-center" style="top: 220px; width: 500px;">
-
-                                No se ha completado su registro correctamente!!
-
-                            </div>
-
-                        </div>
+                        
                         
 
                         <div class="row register-form ml-5">

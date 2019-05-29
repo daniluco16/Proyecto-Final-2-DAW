@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center row" style="width: 100%; margin: auto;">
+<div *ngIf="cargando == false" class="container row justify-content-center" style="margin: auto;">
 
   <div class="col-12">
 
@@ -9,37 +9,52 @@
           </div>
       </div>
       <hr style="background-color: white;">
-      <div class="movie-card" style="border: 3px solid #e35536;">
+
+      <!-- Bucle -->
+      <div *ngFor="let movie of movies | paginate: { itemsPerPage: 6, currentPage: p}" class="movie-card" style="border: 3px solid #e35536;">
           <div class="movie-header">
               <div class="header-icon-container">
-                  <a [routerLink]="['../home/detallePelicula']">
-                      <img
-                          src="https://i.pinimg.com/236x/1d/7d/80/1d7d80e1ec3beb5d808d5d16fb757007--harry-potter-movies-harry-potter-affiche.jpg">
+                  <a [routerLink]="['/home/detallePelicula/', movie.id]">
+                      <img src="{{movie?.poster_path}}">
                   </a>
               </div>
           </div>
           <!--movie-header-->
           <div class="movie-content">
               <div class="movie-content-header">
-                  <a href="#">
-                      <h3 class="movie-title">Man of Steel</h3>
+                  <a [routerLink]="['/home/detallePelicula/', movie.id]">
+                      <h3 class="movie-title">{{movie?.title}}</h3>
                   </a>
               </div>
               <div class="movie-info">
                   <div class="row">
 
                       <div class="col col-sm-8">
-                          <a [routerLink]="['../home/comments']">Comentar <i class="fas fa-comment-dots"></i></a>
+                          <a [routerLink]="['/movie', movie?.id, 'comments']">Comentar <i class="fas fa-comment-dots"></i></a>
                       </div>        
                       <div class="col col-sm-4">
-                        <a href="#" class="d-flex justify-content-end"><img width="25px;" style="max-width: 25px;" src="https://image.flaticon.com/icons/svg/291/291204.svg"></a>
+                        <a (click)="deleteFavorite(movie.id)" class="d-flex justify-content-end"><img width="25px;" style="max-width: 25px;" src="https://image.flaticon.com/icons/svg/291/291204.svg"></a>
                       </div>            
                   </div>
               </div>
           </div>
       </div>
-      
+
+      <pagination-controls class="d-flex justify-content-center my-pagination" (pageChange)="p = $event" responsive="true"
+                previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
 
   </div>
 
+</div>
+<div class="d-flex justify-content-center mt-5" *ngIf="cargando">
+    <div class="spinner-grow text-warning w-20"></div>
+    <div class="spinner-grow text-warning w-20"></div>
+    <div class="spinner-grow text-warning w-20"></div>
+    <div class="spinner-grow text-muted w-20"></div>
+    <div class="spinner-grow text-muted w-20"></div>
+    <div class="spinner-grow text-muted w-20"></div>
+    <div class="spinner-grow text-warning w-20"></div>
+    <div class="spinner-grow text-warning w-20"></div>
+    <div class="spinner-grow text-warning w-20"></div>
 </div>

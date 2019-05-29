@@ -137,12 +137,11 @@ body {
   }
   
   .movie-title {
-    font-size: 24px;
+    font-size: 12px;
+    font-weight: bold;
     margin: 0;
     display: table-cell;
-  }
-  
- 
+  } 
   
   .movie-info {
     margin-top: 1em;

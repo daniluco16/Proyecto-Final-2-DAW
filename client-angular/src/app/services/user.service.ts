@@ -157,6 +157,8 @@ export class UserService {
 
     }
 
+    //Comentarios
+
     crearComment(token, comment): Observable<any>{
 
         let json = JSON.stringify(comment);
@@ -182,6 +184,36 @@ export class UserService {
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', token);
 
         return this._http.delete(this.url+'deleteComment/'+ id, {headers});
+
+    }
+
+    //Favoritos
+
+    crearFavorite(data): Observable<any>{
+
+        let json = JSON.stringify(data);
+
+        let params = 'json='+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', this.getToken());
+
+        return this._http.post(this.url+'addFavorito', params, {headers});
+
+    }
+
+    listarFavoritos(id): Observable<any>{
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.get(this.url+'listadoFavorito/'+id, {headers})
+
+    }
+
+    deleteFavorito(id): Observable<any>{
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', this.getToken());
+
+        return this._http.delete(this.url+'deleteFavorito/'+id, {headers});
 
     }
 
