@@ -30,6 +30,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
+    if(this._userService.getIdentity()){
+
+      this._router.navigate(['home']);
+
+    }
+
     console.log('register.component cargado correctamente');
 
   }

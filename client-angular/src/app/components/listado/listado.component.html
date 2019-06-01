@@ -39,8 +39,9 @@
               <a *ngIf="user.id == identity.sub || identity.rol == 'Admin'" [routerLink]="['editar', user.id]"
                 id="editar"><i class="fas fa-edit"></i></a>
 
-              <a *ngIf="user.id != identity.sub && identity.rol == 'Admin'" (click)="deleteUser(user.id)" id="borrar"><i
-                  class="fas fa-trash-alt"></i></a>
+              <a *ngIf="user.id != identity.sub && identity.rol == 'Admin'" (click)="openDialog(user.id, user.nick)" id="borrar">
+                <i class="fas fa-trash-alt"></i>
+              </a>
 
             </td>
           </tr>

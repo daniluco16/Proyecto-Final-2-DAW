@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Usuario: {{data.nick}}</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col">
+      ¿Estás seguro de eliminar a este usuario?
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+        <img width="100" style="float: right;" src="https://image.flaticon.com/icons/svg/179/179429.svg">
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="align-text-bottom">
+      <button class="btn btn-danger" (click)="deleteUser(data.idUser)" mat-button [mat-dialog-close]="data.idUser" cdkFocusInitial>Eliminar</button>
+      <button class="btn btn-dark" mat-button (click)="onNoClick()">No</button>
+  </div>
+  
+</div>

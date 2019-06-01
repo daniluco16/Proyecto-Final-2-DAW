@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatDialogModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -17,6 +21,7 @@ import { CrearUserComponent } from './components/crear-user/crear-user.component
 import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-pelicula.component';
 import { CommentPeliculasComponent } from './components/comment-peliculas/comment-peliculas.component';
 import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +35,23 @@ import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.com
     CrearUserComponent,
     DetallePeliculaComponent,
     CommentPeliculasComponent,
-    PeliculaFavComponent
+    PeliculaFavComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
   ],
+  entryComponents: [ConfirmationComponent],
   providers: [
     appRoutingProviders
   ],

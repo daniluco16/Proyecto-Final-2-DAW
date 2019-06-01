@@ -7,7 +7,6 @@ import { UserService } from '../../services/user.service';
 import { tmdbService } from '../../services/tmdb.service';
 import { identity } from 'rxjs';
 import { GLOBAL } from 'src/app/services/global';
-import { query } from '@angular/core/src/render3';
 import * as $ from 'jquery';
 
 @Component({
@@ -19,7 +18,6 @@ import * as $ from 'jquery';
 export class HomeComponent implements OnInit {
 
   public p: number = 1;
-
 
   public title: string;
   public key;

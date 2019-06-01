@@ -4,6 +4,9 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { identity } from 'rxjs';
 import { $ } from 'protractor';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
+
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-listado',
@@ -28,7 +31,8 @@ export class ListadoComponent implements OnInit {
 
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    public dialog: MatDialog
 
   ) {
     this.title = 'Listado de usuarios';
@@ -46,11 +50,39 @@ export class ListadoComponent implements OnInit {
 
   }
 
+  openDialog(idUser, nick): void {
+
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+      width: '600px',
+      height: '260px',
+      data: {idUser: idUser, nick: nick}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      for (let index = 0; index < this.users.length; index++) {
+        const user = this.users[index];
+
+        if(user.id == result){
+
+          this.users.splice(index, 1);
+
+        }
+        
+      }
+
+      console.log('The dialog was closed');
+    });
+
+  }
+
   getUsers(){
 
     this._userService.getUsers().subscribe(
 
       response => {
+
+        console.log(response);
 
         if(response.status == 'success'){
 
@@ -102,23 +134,6 @@ export class ListadoComponent implements OnInit {
 
   }
 
-  deleteUser(id){
-    this._userService.delete(this.token, id).subscribe(
-
-      response => {
-
-        this.getUsers();
-
-      },
-      error => {
-
-        console.log(<any>error);
-
-      }
-
-
-    );
-
-  }
+ 
 
 }

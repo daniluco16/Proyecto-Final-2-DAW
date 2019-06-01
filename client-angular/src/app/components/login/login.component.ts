@@ -39,6 +39,12 @@ export class LoginComponent implements OnInit {
 
     }
 
+    if(this._userService.getIdentity()){
+
+      this._router.navigate(['home']);
+
+    }
+
     this.logout();
 
   }

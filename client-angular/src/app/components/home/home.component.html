@@ -1,8 +1,8 @@
 <style>
-        .my-pagination /deep/ .ngx-pagination .current {
-          background: #e35536;
-        }
-      </style>
+    .my-pagination /deep/ .ngx-pagination .current {
+        background: #e35536;
+    }
+</style>
 
 <div class="row justify-content-center mt-2">
     <div class="col-auto col-sm-12 d-flex justify-content-center">
@@ -24,53 +24,57 @@
     
     <div class="col-md-12 col-sm-10">
 
-        <div *ngFor="let item of movies | paginate: { itemsPerPage: 6, currentPage: p}" class="movie-card" style="border: 4px solid #e35536;">
-            <div class="movie-header">
-                <div class="header-icon-container">
-                    <a [routerLink]="['detallePelicula', item.id]">
-                     
-                        <img id="pelis" src="{{item?.poster_path}}" alt="">
-                    </a>
-
-                </div>
-            </div>
-            <!--movie-header-->
-            <div class="movie-content">
-                <div class="movie-content-header">
-                    <div class="row">
-
-                        <div class="col-md-8">
+        <div *ngFor="let item of movies | paginate: { itemsPerPage: 6, currentPage: p}" class="movie-card">
+            <div *ngIf="item.poster_path != 'https://image.tmdb.org/t/p/w200null'" style="border: 4px solid #e35536;">
+                <div class="movie-header">
+                        <div class="header-icon-container">
                             <a [routerLink]="['detallePelicula', item.id]">
-                                <h3 class="movie-title">{{item?.title}}</h3>
+                                <img id="pelis" src="{{item?.poster_path}}">
                             </a>
                         </div>
-                        <div class="col-md-4">
-                            <strong>{{item?.vote_average}}</strong>
-                            <img width="15px" class="ml-2" src="https://image.flaticon.com/icons/svg/1660/1660204.svg">
-                        </div>
-
                     </div>
-
-                </div>
-                <div class="movie-info">
-                    <div class="row">
-
-                        <div class="col col-sm-8">
-                            <a [routerLink]="['/movie', item?.id, 'comments']">Comentar <i class="fas fa-comment-dots"></i></a>
+                    <!--movie-header-->
+                    <div class="movie-content">
+                        <div class="movie-content-header">
+                            <div class="row">
+        
+                                <div class="col-md-8">
+                                    <a [routerLink]="['detallePelicula', item.id]">
+                                        <h3 class="movie-title">{{item?.title}}</h3>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>{{item?.vote_average}}</strong>
+                                    <img width="15px" class="ml-2" src="https://image.flaticon.com/icons/svg/1660/1660204.svg">
+                                </div>
+        
+                            </div>
+        
                         </div>
-                        <div class="col col-sm-4">
-                            <a (click)="addFavorite(item?.id)" id="fav" class="d-flex justify-content-end"><i class="fas fa-crown"></i></a>
+                        <div class="movie-info">
+                            <div class="row">
+        
+                                <div class="col col-sm-8">
+                                    <a [routerLink]="['/movie', item?.id, 'comments']">Comentar <i class="fas fa-comment-dots"></i></a>
+                                </div>
+                                <div class="col col-sm-4">
+                                    <a (click)="addFavorite(item?.id)" id="fav" class="d-flex justify-content-end"><i class="fas fa-crown"></i></a>
+                                </div>
+        
+                            </div>
+        
                         </div>
-
                     </div>
-
-                </div>
             </div>
-            
+
+            <div *ngIf="item.poster_path == 'https://image.tmdb.org/t/p/w200null'" class="pb-5" style="background-color: #282726;">
+                <img width="250px" height="400px" src="https://image.flaticon.com/icons/svg/1554/1554095.svg">
+            </div>
         </div>
         <pagination-controls class="d-flex justify-content-center my-pagination" (pageChange)="p = $event" responsive="true"
                 previousLabel="Anterior" nextLabel="Siguiente">
-            </pagination-controls>
+        </pagination-controls>
     </div>
 </div>
 <!--container-->
+
