@@ -39,8 +39,6 @@ export class DetalleComponent implements OnInit {
 
     }
 
-    console.log('detalle.component cargado correctamente');
-
     this.getUser();
 
   }

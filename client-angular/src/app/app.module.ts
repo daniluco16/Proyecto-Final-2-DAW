@@ -22,6 +22,7 @@ import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-
 import { CommentPeliculasComponent } from './components/comment-peliculas/comment-peliculas.component';
 import { PeliculaFavComponent } from './components/pelicula-fav/pelicula-fav.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { SearchUserPipe } from './pipes/search-user.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     DetallePeliculaComponent,
     CommentPeliculasComponent,
     PeliculaFavComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    SearchUserPipe
   ],
   imports: [
     BrowserModule,

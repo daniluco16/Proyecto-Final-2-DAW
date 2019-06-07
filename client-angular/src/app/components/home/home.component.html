@@ -22,7 +22,7 @@
         </div>
     </form>
     
-    <div class="col-md-12 col-sm-10">
+    <div class="col-12 col-sm-12">
 
         <div *ngFor="let item of movies | paginate: { itemsPerPage: 6, currentPage: p}" class="movie-card">
             <div *ngIf="item.poster_path != 'https://image.tmdb.org/t/p/w200null'" style="border: 4px solid #e35536;">
@@ -36,20 +36,12 @@
                     <!--movie-header-->
                     <div class="movie-content">
                         <div class="movie-content-header">
-                            <div class="row">
         
-                                <div class="col-md-8">
                                     <a [routerLink]="['detallePelicula', item.id]">
                                         <h3 class="movie-title">{{item?.title}}</h3>
                                     </a>
-                                </div>
-                                <div class="col-md-4">
                                     <strong>{{item?.vote_average}}</strong>
-                                    <img width="15px" class="ml-2" src="https://image.flaticon.com/icons/svg/1660/1660204.svg">
-                                </div>
-        
-                            </div>
-        
+                                    <img width="15px" class="ml-2" src="https://image.flaticon.com/icons/svg/1660/1660204.svg">        
                         </div>
                         <div class="movie-info">
                             <div class="row">
@@ -57,6 +49,7 @@
                                 <div class="col col-sm-8">
                                     <a [routerLink]="['/movie', item?.id, 'comments']">Comentar <i class="fas fa-comment-dots"></i></a>
                                 </div>
+
                                 <div class="col col-sm-4">
                                     <a (click)="addFavorite(item?.id)" id="fav" class="d-flex justify-content-end"><i class="fas fa-crown"></i></a>
                                 </div>

@@ -16,7 +16,7 @@ class CreateFavoritesTable extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('Film_id')->unsigned();
-            $table->integer('User_id')->unsigned()->references('id')->on('users');
+            $table->integer('User_id')->unsigned()->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

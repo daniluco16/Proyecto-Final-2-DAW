@@ -1,4 +1,4 @@
-<div class="container-fluid ">
+<div class="container">
   <form enctype="multipart/form-data" #CrearComentarioForm="ngForm" (ngSubmit)="onSubmit(CrearComentarioForm);">
 
     <div class="alert alert-success text-center w-100 mt-3" *ngIf="status == 'success'">
@@ -12,14 +12,14 @@
 
     </div>
 
-    <div class="row mt-5 mb-3">
+    <div class="row mt-5 mb-3 justify-content-center">
 
-      <div class="col-4 col-sm-4 d-flex justify-content-center">
-        <img style="border: 8px whitesmoke; border-style: double;" width=300 height="400"
+      <div class="col-auto">
+        <img style="border: 8px whitesmoke; border-style: double;"
           src="{{movie?.poster_path}}">
       </div>
 
-      <div class="col-6 col-sm-6 form-group">
+      <div class="col-auto  form-group">
 
         <label for="comentario" style="color: white;">Comentario de la película:</label>
         <textarea name="contenido" #contenido="ngModel" [(ngModel)]="comment.contenido" class="form-control" rows="5"
@@ -35,6 +35,7 @@
   </form>
 
     <div *ngFor="let comment of comments" class="row mb-3 d-flex justify-content-center">
+
       <div class="col-8">
         <div class="card card-white post">
           <div class="post-heading">

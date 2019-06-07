@@ -2,9 +2,24 @@
   .my-pagination /deep/ .ngx-pagination .current {
     background: #e35536;
   }
+  
+
+
 </style>
 
 <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-auto col-sm-6">
+        <div class="input-group md-form form-sm form-1 pl-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text lighten-3" style="background-color: #e35536;" id="basic-text1"><i class="fas fa-search text-white"
+                  aria-hidden="true"></i></span>
+            </div>
+            <input [(ngModel)]="search" class="form-control my-0 py-1" style="color: white;" type="text" placeholder="Search" aria-label="Search">
+        </div>
+    </div>   
+  </div>
+
   <div class="row d-flex justify-content-center" *ngIf="users">
     <div class="col-sm-12  d-flex justify-content-center">
       <table class="table">
@@ -17,29 +32,30 @@
             <th scope="col">Opciones</th>
           </tr>
         </thead>
-        <tbody *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: p}">
-          
+        <tbody *ngFor="let user of users | searchUser: search | paginate: { itemsPerPage: 5, currentPage: p}">
+
           <tr>
             <td>{{user.nick}}</td>
             <td>{{user.name}}</td>
             <td>{{user.surname}}</td>
             <td>{{user.email}}</td>
             <td>
-              <a *ngIf="identity.rol == 'Admin' && user.id != identity.sub"
-                (click)="changeRol(user.id)" id="permiso_user">
+              <a *ngIf="identity.rol == 'Admin' && user.id != identity.sub" (click)="changeRol(user.id)"
+                id="permiso_user">
 
                 <i id="admin" *ngIf="user.rol == 'Admin'" class="fas fa-lock-open"></i>
                 <i id="usuario" *ngIf="user.rol == 'Usuario'" class="fas fa-lock"></i>
 
               </a>
-              
-                
+
+
               <a [routerLink]="['detalle', user.id]" id="ver"><i class="fas fa-eye"></i></a>
 
               <a *ngIf="user.id == identity.sub || identity.rol == 'Admin'" [routerLink]="['editar', user.id]"
                 id="editar"><i class="fas fa-edit"></i></a>
 
-              <a *ngIf="user.id != identity.sub && identity.rol == 'Admin'" (click)="openDialog(user.id, user.nick)" id="borrar">
+              <a *ngIf="user.id != identity.sub && identity.rol == 'Admin'" (click)="openDialog(user.id, user.nick)"
+                id="borrar">
                 <i class="fas fa-trash-alt"></i>
               </a>
 

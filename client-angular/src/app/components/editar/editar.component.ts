@@ -14,8 +14,12 @@ export class EditarComponent implements OnInit {
   public title: string;
   public user: User;
   public status: string;
+  public confirm_passwordModel: string;
   public token;
+  public identity;
   public url: any;
+  public newUserImage;
+  public newNick;
 
   constructor(
 
@@ -30,6 +34,7 @@ export class EditarComponent implements OnInit {
     this.title = 'Editar usuario';
 
     this.token = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
 
 
     this.user = new User(1, '', '', '', '', '', '', '');
@@ -38,8 +43,6 @@ export class EditarComponent implements OnInit {
    }
 
   ngOnInit() {
-
-    console.log('editar.component cargado correctamente');
 
     this._route.params.subscribe(
 
@@ -78,7 +81,6 @@ export class EditarComponent implements OnInit {
             if(response.status == 'success'){
 
               this.user = response.user;
-              console.log(response);
 
             }else{
 
@@ -97,19 +99,31 @@ export class EditarComponent implements OnInit {
 
   onSubmit(form) {
 
-   console.log(this.user.id);
-
    this._userService.updateUser(this.token, this.user, this.user.id).subscribe(
 
     response => {
 
-      console.log(response);
-
       if(response.status == 'success'){
 
         this.status = 'success';
-        this.user = response.user;
 
+        if(this.identity.sub == this.user.id){
+
+          if(response.user_image){
+          
+            this.newUserImage = response.user_image;
+    
+            this.identity.image = this.newUserImage;
+    
+            }
+    
+            this.newNick = response.new_nick;
+            this.identity.nick = this.newNick;
+    
+            localStorage.setItem('identity', JSON.stringify(this.identity));    
+
+        }
+        
         this._router.navigate(['listadoUser']);
 
 

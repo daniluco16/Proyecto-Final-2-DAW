@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   public movie;
   public movies: Array<any>;
   public favorite: Favorite;
+  public favorites: Array<Favorite>;
+
   public token;
   public identity;
   public input: string = '';
@@ -79,13 +81,13 @@ export class HomeComponent implements OnInit {
      );
   }
 
+
   addFavorite(idfilm){
 
     this._userService.crearFavorite({'Film_id' : idfilm, 'User_id' : this.identity.sub}).subscribe(
 
       response => {
 
-        console.log(response);
 
         if(response.status == 'success'){
 
@@ -116,8 +118,7 @@ export class HomeComponent implements OnInit {
 
         response => {
   
-          console.log(response);
-  
+    
           this.movies = response['results'];
   
           this.movies.forEach(movie => {

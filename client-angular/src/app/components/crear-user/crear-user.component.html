@@ -1,9 +1,7 @@
-<div class="container contact-form" style="width: 800px;">
+<div class="container-fluid contact-form">
     <div class="contact-image">
         <img src="https://image.flaticon.com/icons/svg/1169/1169097.svg" />
     </div>
-
-
 
     <form enctype="multipart/form-data" #storeForm="ngForm" (ngSubmit)="onSubmit(storeForm);">
         <h3>Crear/Editar un Usuario</h3>
@@ -57,7 +55,7 @@
 
                 <div class="row">
 
-                    <div class="col-sm-12">
+                    <div class="col-12 col-sm-12">
                         <div class="form-group text-center">
                             <input type="submit" name="btnSubmit" class="btn btn-danger btnContact"
                                 value="Registrar Usuario" />

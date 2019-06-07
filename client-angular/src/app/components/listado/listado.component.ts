@@ -17,7 +17,7 @@ import { MatDialog } from '@angular/material';
 export class ListadoComponent implements OnInit {
 
   public p: number = 1;
-
+  public search: string;
   public title: string;
   public user: User;
   public status: string;
@@ -43,11 +43,8 @@ export class ListadoComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('listado.component cargado correctamente');
-
     this.getUsers();
-    
-
+  
   }
 
   openDialog(idUser, nick): void {
@@ -82,14 +79,12 @@ export class ListadoComponent implements OnInit {
 
       response => {
 
-        console.log(response);
 
         if(response.status == 'success'){
 
           this.users = response.user;
 
         }
-        console.log(response);
 
       },
       error => {
@@ -110,7 +105,6 @@ export class ListadoComponent implements OnInit {
 
       response => {
 
-        console.log(response);
   
         if(response.status == 'success'){
   

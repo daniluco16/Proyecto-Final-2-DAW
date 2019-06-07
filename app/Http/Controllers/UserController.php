@@ -438,10 +438,10 @@ class UserController extends Controller
             
             $user = User::where('id', $id)->update($params_array);
 
-
             $data = array(
 
-                'user' => $params,
+                'user_image' => isset($params_array['image']) ? $params_array['image'] : null,
+                'new_nick' => $params_array['nick'],
                 'status' => 'success',
                 'code' => 200
 

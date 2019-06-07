@@ -28,12 +28,13 @@ class FavoriteController extends Controller
 
             $film_id = $params->Film_id;
             $user_id = $params->User_id;
-
+            
             $favorito = new Favorite();
 
             $favorito->Film_id = $film_id;
             $favorito->User_id = $user_id;
-
+            
+            
             $favorito->save();
 
             $data = array(

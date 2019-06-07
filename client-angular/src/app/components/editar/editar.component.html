@@ -34,8 +34,19 @@
                 </div>
 
                 <div class="form-group">
-                        <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Contraseña" required/>
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Contraseña" required/>
                 </div>
+
+                <div class="form-group">
+                    <input type="password" name="confirm_password" #confirm_password="ngModel" [(ngModel)]="confirm_passwordModel" class="form-control"
+                     placeholder="Confirmar Contraseña" required/>
+                </div>
+
+                <span *ngIf="user.password != confirm_passwordModel && password.touched" class="text-danger">
+
+                    Tienes que confirmar la contraseña!!
+
+                </span>
                 
                 <div class="form-group">
                     <input type="file" name="image" (change)="readUrl($event)" accept="image/jpeg, image/png" class="form-control" placeholder="Imagen de perfil" />
@@ -54,7 +65,7 @@
                     <div class="col-6 col-sm-6">
 
                         <div class="form-group text-center">
-                            <input type="submit" name="btnSubmit" class="btn btn-danger btnContact"
+                            <input type="submit" [disabled]="!editarForm.form.valid || user.password != confirm_passwordModel" class="btn btn-danger btnContact"
                                 value="Actualizar usuario" />
                         </div>
 
